@@ -1,6 +1,7 @@
 # GitHub Linguist Language Detection
-# Mark scripts and config files so they don't skew the language stats
+# Mark scripts, config files, and generated artifacts as vendored/documentation
 scripts/** linguist-documentation
+eslint.config.* linguist-vendored
 *.config.mjs linguist-vendored
 *.config.ts linguist-vendored
 
