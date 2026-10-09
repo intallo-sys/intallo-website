@@ -1,0 +1,32 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum SubmissionStatus {
+  RECEIVED
+  EMAIL_SENT
+  EMAIL_FAILED
+}
+
+model ContactSubmission {
+  id             String           @id @default(uuid()) @db.Uuid
+  name           String           @db.VarChar(100)
+  email          String           @db.VarChar(254)
+  company        String           @db.VarChar(150)
+  message        String
+  status         SubmissionStatus @default(RECEIVED)
+  emailMessageId String?          @map("email_message_id") @db.VarChar(255)
+  ipHash         String?          @map("ip_hash") @db.VarChar(64)
+  createdAt      DateTime         @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt      DateTime         @updatedAt @map("updated_at") @db.Timestamptz(6)
+
+  @@index([createdAt(sort: Desc)])
+  @@index([status])
+  @@index([ipHash, createdAt])
+  @@map("contact_submissions")
+}

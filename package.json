@@ -1,0 +1,32 @@
+{
+  "name": "intallo-website",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.4.0",
+    "framer-motion": "^14.0.0",
+    "lucide-react": "^1.52.0",
+    "next": "16.4.0",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "resend": "^6.32.1",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@tailwindcss/turbopack": "^4",
+    "eslint": "^9",
+    "eslint-config-next": "16.4.0",
+    "prisma": "^6.4.0",
+    "tailwindcss": "^4",
+    "typescript": "^5.9.3",
+    "vitest": "^3.0.0"
+  }
+}

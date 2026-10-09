@@ -1,0 +1,39 @@
+@import "tailwindcss";
+
+@theme {
+  --color-intallo-blue: #1a76ff;        /* buttons, eyebrows, numbers, links on dark */
+  --color-intallo-navy: #063b73;        /* dark cards, Home CTA band, About mission & CTA bands */
+  --color-intallo-navy-deep: #05294f;   /* Contact left card */
+  --color-intallo-ink: #0b2a4a;         /* main headings */
+  --color-intallo-ink-teal: #173b4d;    /* Services hero H1 (slightly teal-dark) */
+  --color-intallo-body: #0f2236;        /* body text on white */
+  --color-intallo-muted: #6d8094;       /* gray body copy, footer text */
+  --color-intallo-page: #f4f9ff;        /* default page background (very light blue) */
+  --color-intallo-band: #eaf4ff;        /* About hero band, number badges */
+  --color-intallo-footer: #f9f9f6;      /* footer background (off-white, NOT pure white) */
+  --color-intallo-border: #d7e2ec;
+  --color-intallo-input-border: #bfd9f2;
+  --color-intallo-on-navy: #bcd0e6;     /* light blue-gray text on navy */
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  background-color: var(--color-intallo-page);
+  color: var(--color-intallo-body);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 165 40" fill="none" width="165" height="40">
+  <!-- Cube Icon -->
+  <g transform="translate(2, 4)">
+    <!-- Top Face -->
+    <polygon points="16,2 28,9 16,16 4,9" fill="#1A76FF"/>
+    <!-- Left Face -->
+    <polygon points="4,9 16,16 16,30 4,23" fill="#063B73"/>
+    <!-- Right Face -->
+    <polygon points="16,16 28,9 28,23 16,30" fill="#0B2A4A"/>
+  </g>
+  <!-- Wordmark Intallo -->
+  <text x="38" y="27" font-family="'Inter', system-ui, -apple-system, sans-serif" font-weight="700" font-size="22" fill="#063B73" letter-spacing="-0.5">Intall</text>
+  <!-- Ring 'o' -->
+  <circle cx="108" cy="21" r="6.5" stroke="#1A76FF" stroke-width="3.5" fill="none"/>
+</svg>
