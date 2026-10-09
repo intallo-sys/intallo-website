@@ -1,6 +1,6 @@
 const BASE_URL = "http://localhost:3000";
 
-async function testHttp() {
+async function testHttp(): Promise<void> {
   console.log("=========================================");
   console.log("   INTALLO REAL HTTP API TEST SUITE");
   console.log("=========================================\n");

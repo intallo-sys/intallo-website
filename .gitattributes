@@ -1,0 +1,9 @@
+# GitHub Linguist Language Detection
+# Mark scripts and config files so they don't skew the language stats
+scripts/** linguist-documentation
+*.config.mjs linguist-vendored
+*.config.ts linguist-vendored
+
+# Explicitly ensure TypeScript files are detected
+*.ts linguist-detectable=true
+*.tsx linguist-detectable=true
