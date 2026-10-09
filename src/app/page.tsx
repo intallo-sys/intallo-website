@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import ActionLink from "@/components/ui/ActionLink";
 import Container from "@/components/ui/Container";
@@ -5,9 +6,9 @@ import Lines from "@/components/ui/Lines";
 import ImagePlaceholder from "@/components/ui/ImagePlaceholder";
 import Reveal from "@/components/ui/Reveal";
 import { home } from "@/lib/content";
-import { StaggerContainer, StaggerItem, ScaleIn, AnimatedCard, FadeIn } from "@/components/ui/Animations";
+import { StaggerContainer, StaggerItem, AnimatedCard } from "@/components/ui/Animations";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Intallo — Digital Systems for Modern Businesses",
   description: home.hero.body,
   openGraph: {

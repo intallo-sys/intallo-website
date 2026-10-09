@@ -1,15 +1,27 @@
 import { Resend } from "resend";
 
-let client;
-function getClient() {
+let client: Resend | undefined;
+function getClient(): Resend {
   if (!client) client = new Resend(process.env.RESEND_API_KEY);
   return client;
 }
 
-const oneLine = (value) => String(value).replace(/[\r\n]+/g, " ").trim();
+const oneLine = (value: string | number) => String(value).replace(/[\r\n]+/g, " ").trim();
+
+export interface SendContactNotificationParams {
+  name: string;
+  email: string;
+  company: string;
+  message: string;
+}
 
 /** Sends the internal notification. Returns the provider message id. Throws on failure. */
-export async function sendContactNotification({ name, email, company, message }) {
+export async function sendContactNotification({
+  name,
+  email,
+  company,
+  message,
+}: SendContactNotificationParams): Promise<string | null> {
   const { data, error } = await getClient().emails.send({
     from: process.env.CONTACT_FROM_EMAIL || "onboarding@resend.dev",
     to: process.env.CONTACT_RECIPIENT_EMAIL || "hello@intallo.com",

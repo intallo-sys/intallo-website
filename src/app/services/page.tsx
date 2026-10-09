@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import ActionLink from "@/components/ui/ActionLink";
 import Container from "@/components/ui/Container";
 import Lines from "@/components/ui/Lines";
@@ -5,7 +6,7 @@ import ImagePlaceholder from "@/components/ui/ImagePlaceholder";
 import Reveal from "@/components/ui/Reveal";
 import { services } from "@/lib/content";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Intallo Services — Digital Systems for Modern Businesses",
   description: services.hero.body,
   openGraph: {

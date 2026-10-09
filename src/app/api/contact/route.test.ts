@@ -14,10 +14,10 @@ vi.mock("@/lib/email/client", () => ({
   sendContactNotification: vi.fn().mockResolvedValue("msg_mock123"),
 }));
 
-import { POST } from "./route.js";
+import { POST } from "./route";
 
 describe("POST /api/contact", () => {
-  function makeReq(body, headers = {}) {
+  function makeReq(body: any, headers: Record<string, string> = {}) {
     return new Request("http://localhost:3000/api/contact", {
       method: "POST",
       headers: {

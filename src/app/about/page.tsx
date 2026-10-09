@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { PenTool, Lightbulb, Handshake } from "lucide-react";
 import ActionLink from "@/components/ui/ActionLink";
 import Container from "@/components/ui/Container";
@@ -6,13 +7,13 @@ import ImagePlaceholder from "@/components/ui/ImagePlaceholder";
 import Reveal from "@/components/ui/Reveal";
 import { about } from "@/lib/content";
 
-const iconMap = {
+const iconMap: Record<string, any> = {
   "pen-tool": PenTool,
   "cpu": Lightbulb,
   "handshake": Handshake,
 };
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "About Intallo — Digital Experiences That Move Businesses Forward",
   description: about.hero.body,
   openGraph: {

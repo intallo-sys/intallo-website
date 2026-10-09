@@ -1,17 +1,19 @@
 import { PrismaClient } from "@prisma/client";
 import { log } from "@/lib/logger";
 
-const globalForPrisma = globalThis;
+const globalForPrisma = globalThis as unknown as {
+  __intalloPrisma?: PrismaClient;
+};
 
-function createClient() {
+function createClient(): PrismaClient {
   const realPrisma = new PrismaClient();
-  const inMemoryStore = [];
+  const inMemoryStore: any[] = [];
 
   return new Proxy(realPrisma, {
-    get(target, prop, receiver) {
+    get(target: any, prop: string | symbol, receiver: any) {
       if (prop === "contactSubmission") {
         return {
-          create: async ({ data, select }) => {
+          create: async ({ data, select }: { data: any; select?: any }) => {
             try {
               return await target.contactSubmission.create({ data, select });
             } catch {
@@ -26,7 +28,7 @@ function createClient() {
               return mockSub;
             }
           },
-          update: async ({ where, data }) => {
+          update: async ({ where, data }: { where: { id: string }; data: any }) => {
             try {
               return await target.contactSubmission.update({ where, data });
             } catch {
@@ -35,7 +37,7 @@ function createClient() {
               return item;
             }
           },
-          count: async ({ where }) => {
+          count: async ({ where }: { where?: any }) => {
             try {
               return await target.contactSubmission.count({ where });
             } catch {
@@ -50,7 +52,7 @@ function createClient() {
 
       return Reflect.get(target, prop, receiver);
     },
-  });
+  }) as PrismaClient;
 }
 
 export const prisma = globalForPrisma.__intalloPrisma ?? createClient();

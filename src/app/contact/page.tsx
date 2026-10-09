@@ -1,10 +1,11 @@
+import type { Metadata } from "next";
 import Container from "@/components/ui/Container";
 import ContactInfo from "@/components/contact/ContactInfo";
 import ContactForm from "@/components/contact/ContactForm";
 import Reveal from "@/components/ui/Reveal";
 import { contact } from "@/lib/content";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Contact Intallo — Let's Talk About Your Next Idea",
   description: contact.hero.body,
   openGraph: {
