@@ -1,4 +1,4 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/db/client";
 import { contactSchema } from "@/lib/validation/contact";
 import { getClientIp, hashIp, isRateLimited } from "@/lib/rate-limit/contact";
@@ -15,7 +15,7 @@ const FAILURE = {
   error: "We could not send your message right now. Please try again.",
 };
 
-export async function POST(request) {
+export async function POST(request: Request | NextRequest) {
   log("info", "contact.request_received");
 
   try {
@@ -30,7 +30,7 @@ export async function POST(request) {
     }
 
     // 2. Parse JSON
-    let body;
+    let body: any;
     try {
       body = JSON.parse(raw);
     } catch {
@@ -60,7 +60,7 @@ export async function POST(request) {
     }
 
     // 6. Persist first, so the lead is never lost
-    const submission = await prisma.contactSubmission.create({
+    const submission = await (prisma as any).contactSubmission.create({
       data: { ...data, ipHash, status: "RECEIVED" },
       select: { id: true },
     });
@@ -69,7 +69,7 @@ export async function POST(request) {
     // 7. Notify by email; failure must not lose the lead
     try {
       const messageId = await sendContactNotification(data);
-      await prisma.contactSubmission.update({
+      await (prisma as any).contactSubmission.update({
         where: { id: submission.id },
         data: { status: "EMAIL_SENT", emailMessageId: messageId },
       });
@@ -77,7 +77,7 @@ export async function POST(request) {
     } catch {
       log("error", "contact.email_failed");
       try {
-        await prisma.contactSubmission.update({
+        await (prisma as any).contactSubmission.update({
           where: { id: submission.id },
           data: { status: "EMAIL_FAILED" },
         });

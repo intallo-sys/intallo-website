@@ -1,10 +1,10 @@
-import { GET as healthGET } from "../src/app/api/health/route.js";
-import { GET as readyGET } from "../src/app/api/ready/route.js";
-import { POST as contactPOST } from "../src/app/api/contact/route.js";
-import { prisma } from "../src/lib/db/client.js";
+import { GET as healthGET } from "../src/app/api/health/route";
+import { GET as readyGET } from "../src/app/api/ready/route";
+import { POST as contactPOST } from "../src/app/api/contact/route";
+import { prisma } from "../src/lib/db/client";
 
 // In case local Postgres is not running, mock Prisma methods for testing
-let submissions = [];
+let submissions: any[] = [];
 let mockDbActive = false;
 
 try {
@@ -14,8 +14,8 @@ try {
   console.log("Live PostgreSQL offline; enabling in-memory database mock for test validation.");
   mockDbActive = true;
   
-  prisma.contactSubmission = {
-    create: async ({ data }) => {
+  (prisma as any).contactSubmission = {
+    create: async ({ data }: { data: any }) => {
       const sub = {
         id: "123e4567-e89b-12d3-a456-426614174000",
         ...data,
@@ -25,17 +25,17 @@ try {
       submissions.push(sub);
       return sub;
     },
-    update: async ({ where, data }) => {
+    update: async ({ where, data }: { where: { id: string }; data: any }) => {
       const item = submissions.find((s) => s.id === where.id);
       if (item) Object.assign(item, data);
       return item;
     },
-    count: async ({ where }) => {
-      return submissions.filter((s) => s.ipHash === where.ipHash).length;
+    count: async ({ where }: { where?: any }) => {
+      return submissions.filter((s) => s.ipHash === where?.ipHash).length;
     },
   };
 
-  prisma.$queryRaw = async () => [{ "?column?": 1 }];
+  (prisma as any).$queryRaw = async () => [{ "?column?": 1 }];
 }
 
 async function runTests() {
@@ -58,7 +58,7 @@ async function runTests() {
   console.log("Response Body:", JSON.stringify(readyData));
 
   // Helper to construct mock Request
-  function makeReq(body, headers = {}) {
+  function makeReq(body: any, headers: Record<string, string> = {}) {
     return new Request("http://localhost:3000/api/contact", {
       method: "POST",
       headers: {

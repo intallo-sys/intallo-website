@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { contactSchema } from "./contact.js";
+import { contactSchema } from "./contact";
 
 describe("contactSchema", () => {
   it("validates a correct payload", () => {

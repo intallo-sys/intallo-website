@@ -1,6 +1,12 @@
 import Image from "next/image";
 
-export default function ImagePlaceholder({ alt, src, className = "h-48 w-full" }) {
+export interface ImagePlaceholderProps {
+  alt?: string;
+  src?: string | null;
+  className?: string;
+}
+
+export default function ImagePlaceholder({ alt, src, className = "h-48 w-full" }: ImagePlaceholderProps) {
   if (src) {
     return (
       <div className={`relative overflow-hidden rounded ${className}`}>

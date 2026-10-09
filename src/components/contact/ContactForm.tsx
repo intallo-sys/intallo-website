@@ -1,25 +1,36 @@
 "use client";
 
-import { useState } from "react";
+import { useState, ChangeEvent, FormEvent } from "react";
 import { contact } from "@/lib/content";
+
+interface FormDataState {
+  name: string;
+  email: string;
+  company: string;
+  message: string;
+  website: string;
+  [key: string]: string;
+}
+
+type SubmissionStatus = "idle" | "submitting" | "success" | "error";
 
 export default function ContactForm() {
   const { form } = contact;
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormDataState>({
     name: "",
     email: "",
     company: "",
     message: "",
     website: "", // honeypot
   });
-  const [status, setStatus] = useState("idle"); // idle | submitting | success | error
+  const [status, setStatus] = useState<SubmissionStatus>("idle");
   const [errorMsg, setErrorMsg] = useState("");
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setStatus("submitting");
     setErrorMsg("");
