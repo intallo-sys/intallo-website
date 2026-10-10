@@ -461,20 +461,6 @@ export const about = {
         links: { linkedin: null, github: null, email: "mailto:contact@intallo.in" },
       },
       {
-        name: "Sujal Vaidya",
-        role: "CTO",
-        description:
-          "Architects core technical strategy, backend infrastructure, cloud systems, and high-performance automation engines across client platforms.",
-        descriptionLines: [
-          "Architects technical strategy,",
-          "cloud infrastructure, and",
-          "high-performance automation engines.",
-        ],
-        photo: "/images/team/sujal.jpeg",
-        photoAlt: "Sujal Vaidya, CTO at Intallo",
-        links: { linkedin: null, github: null, email: "mailto:contact@intallo.in" },
-      },
-      {
         name: "Ujwal Bilagi",
         role: "Technical Lead",
         description:
@@ -486,6 +472,20 @@ export const about = {
         ],
         photo: "/images/team/ujwal.jpeg",
         photoAlt: "Ujwal Bilagi, Technical Lead at Intallo",
+        links: { linkedin: null, github: null, email: "mailto:contact@intallo.in" },
+      },
+      {
+        name: "Sujal Vaidya",
+        role: "CTO",
+        description:
+          "Architects core technical strategy, backend infrastructure, cloud systems, and high-performance automation engines across client platforms.",
+        descriptionLines: [
+          "Architects technical strategy,",
+          "cloud infrastructure, and",
+          "high-performance automation engines.",
+        ],
+        photo: "/images/team/sujal.jpeg",
+        photoAlt: "Sujal Vaidya, CTO at Intallo",
         links: { linkedin: null, github: null, email: "mailto:contact@intallo.in" },
       },
       {
