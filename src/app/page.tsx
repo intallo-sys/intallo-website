@@ -6,7 +6,15 @@ import Lines from "@/components/ui/Lines";
 import ImagePlaceholder from "@/components/ui/ImagePlaceholder";
 import Reveal from "@/components/ui/Reveal";
 import { home } from "@/lib/content";
-import { StaggerContainer, StaggerItem, AnimatedCard } from "@/components/ui/Animations";
+import {
+  StaggerContainer,
+  StaggerItem,
+  AnimatedCard,
+  SpotlightCard,
+  Magnetic,
+  NumberTicker,
+  SvgPathDraw,
+} from "@/components/ui/Animations";
 
 export const metadata: Metadata = {
   title: "Intallo — Digital Systems for Modern Businesses",
@@ -40,6 +48,30 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-intallo-navy/70 mix-blend-multiply" />
         <div className="absolute inset-0 bg-gradient-to-t from-intallo-navy/80 via-intallo-navy/30 to-intallo-navy/10" />
         
+        {/* Animated decorative SVG lines */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden z-[5]">
+          <svg
+            className="w-full h-full opacity-25"
+            viewBox="0 0 1440 800"
+            fill="none"
+            preserveAspectRatio="none"
+          >
+            <SvgPathDraw
+              d="M-100 200 C 300 450, 700 100, 1540 300"
+              stroke="#1a76ff"
+              strokeWidth={1.5}
+              duration={2}
+            />
+            <SvgPathDraw
+              d="M-100 500 C 400 250, 900 650, 1540 400"
+              stroke="#60a5fa"
+              strokeWidth={1}
+              duration={2.5}
+              delay={0.2}
+            />
+          </svg>
+        </div>
+        
         <Container className="relative z-10 w-full">
           <StaggerContainer className="space-y-6 max-w-3xl" staggerDelay={0.1}>
             <StaggerItem>
@@ -59,12 +91,14 @@ export default function HomePage() {
             </StaggerItem>
             <StaggerItem>
               <div className="pt-4">
-                <ActionLink
-                  href={home.hero.cta.href}
-                  className="inline-block bg-intallo-blue text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-600 transition-all focus:outline-none focus:ring-2 focus:ring-white hover:scale-[1.03] active:scale-[0.98] duration-200"
-                >
-                  {home.hero.cta.label}
-                </ActionLink>
+                <Magnetic strength={0.25}>
+                  <ActionLink
+                    href={home.hero.cta.href}
+                    className="inline-block bg-intallo-blue text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-600 transition-all focus:outline-none focus:ring-2 focus:ring-white shadow-lg shadow-blue-500/25 active:scale-[0.98] duration-200"
+                  >
+                    {home.hero.cta.label}
+                  </ActionLink>
+                </Magnetic>
               </div>
             </StaggerItem>
           </StaggerContainer>
@@ -86,12 +120,17 @@ export default function HomePage() {
             <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6" staggerDelay={0.15}>
               {home.whatWeDo.items.map((item, i) => (
                 <StaggerItem key={i}>
-                  <AnimatedCard className="bg-intallo-navy text-white p-6 rounded-xl space-y-3 h-full">
-                    <span className="text-intallo-blue font-bold text-2xl">{item.number}</span>
-                    <h3 className="text-xl font-semibold">{item.title}</h3>
-                    <p className="text-intallo-on-navy text-sm">{item.description}</p>
-                    <div className="w-7 h-0.5 bg-white mt-4" aria-hidden="true" />
-                  </AnimatedCard>
+                  <SpotlightCard
+                    spotlightColor="rgba(26, 118, 255, 0.22)"
+                    className="bg-intallo-navy text-white p-7 rounded-xl space-y-3 h-full border border-white/10 hover:border-intallo-blue/50 transition-all duration-300 shadow-md hover:shadow-xl"
+                  >
+                    <span className="text-intallo-blue font-bold text-2xl inline-block">
+                      <NumberTicker value={parseInt(item.number, 10)} padZero={true} />
+                    </span>
+                    <h3 className="text-xl font-semibold tracking-tight">{item.title}</h3>
+                    <p className="text-intallo-on-navy text-sm leading-relaxed">{item.description}</p>
+                    <div className="w-8 h-0.5 bg-intallo-blue/60 mt-4 rounded-full" aria-hidden="true" />
+                  </SpotlightCard>
                 </StaggerItem>
               ))}
             </StaggerContainer>
@@ -134,10 +173,12 @@ export default function HomePage() {
                         </p>
                       </div>
                       <div className="pt-2">
-                        <ActionLink href={item.cta.href} className="group inline-flex items-center text-[#2F8CFF] font-semibold hover:text-white transition-colors duration-300">
-                          {item.cta.label.replace('→', '')} 
-                          <span className="ml-1 transition-transform duration-300 group-hover:translate-x-1">→</span>
-                        </ActionLink>
+                        <Magnetic strength={0.15}>
+                          <ActionLink href={item.cta.href} className="group inline-flex items-center text-[#2F8CFF] font-semibold hover:text-white transition-colors duration-300">
+                            {item.cta.label.replace('→', '')} 
+                            <span className="ml-1 transition-transform duration-300 group-hover:translate-x-1">→</span>
+                          </ActionLink>
+                        </Magnetic>
                       </div>
                     </div>
                     
@@ -171,11 +212,16 @@ export default function HomePage() {
             <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6" staggerDelay={0.1}>
               {home.whyIntallo.items.map((item, i) => (
                 <StaggerItem key={i}>
-                  <AnimatedCard className="space-y-2 bg-white p-6 rounded-xl border border-gray-100 h-full">
-                    <span className="text-intallo-blue font-bold text-lg">{item.number}</span>
+                  <SpotlightCard
+                    spotlightColor="rgba(26, 118, 255, 0.08)"
+                    className="space-y-3 bg-white p-7 rounded-xl border border-gray-100/90 h-full shadow-sm hover:shadow-md transition-all duration-300"
+                  >
+                    <span className="text-intallo-blue font-bold text-lg inline-block">
+                      <NumberTicker value={parseInt(item.number, 10)} padZero={true} />
+                    </span>
                     <h3 className="text-lg font-bold text-intallo-ink">{item.title}</h3>
-                    <p className="text-intallo-muted text-sm">{item.description}</p>
-                  </AnimatedCard>
+                    <p className="text-intallo-muted text-sm leading-relaxed">{item.description}</p>
+                  </SpotlightCard>
                 </StaggerItem>
               ))}
             </StaggerContainer>
@@ -190,20 +236,29 @@ export default function HomePage() {
             <p className="text-xs uppercase tracking-widest font-semibold text-intallo-blue">
               {home.cta.eyebrow}
             </p>
-            <div className="bg-intallo-navy text-white p-8 md:p-12 rounded-xl space-y-4">
-              <h2 className="text-2xl md:text-3xl font-bold">{home.cta.heading}</h2>
-              <p className="text-intallo-on-navy text-sm md:text-base max-w-xl">
+            <SpotlightCard
+              spotlightColor="rgba(26, 118, 255, 0.28)"
+              className="bg-intallo-navy text-white p-8 md:p-12 rounded-2xl space-y-5 border border-white/10 shadow-2xl relative overflow-hidden"
+            >
+              <div
+                className="absolute -right-20 -bottom-20 w-80 h-80 bg-intallo-blue/20 rounded-full blur-3xl pointer-events-none"
+                aria-hidden="true"
+              />
+              <h2 className="text-2xl md:text-3xl font-bold tracking-tight">{home.cta.heading}</h2>
+              <p className="text-intallo-on-navy text-sm md:text-base max-w-xl leading-relaxed">
                 {home.cta.body}
               </p>
-              <div>
-                <ActionLink
-                  href={home.cta.button.href}
-                  className="inline-block bg-intallo-blue text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-600 transition-all focus:outline-none focus:ring-2 focus:ring-white hover:scale-[1.03] active:scale-[0.98] duration-200"
-                >
-                  {home.cta.button.label}
-                </ActionLink>
+              <div className="pt-2">
+                <Magnetic strength={0.25}>
+                  <ActionLink
+                    href={home.cta.button.href}
+                    className="inline-block bg-intallo-blue text-white px-8 py-3.5 rounded-lg font-semibold hover:bg-blue-600 transition-all focus:outline-none focus:ring-2 focus:ring-white shadow-lg shadow-blue-500/25 active:scale-[0.98] duration-200"
+                  >
+                    {home.cta.button.label}
+                  </ActionLink>
+                </Magnetic>
               </div>
-            </div>
+            </SpotlightCard>
           </Container>
         </section>
       </Reveal>

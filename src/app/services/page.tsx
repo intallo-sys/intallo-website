@@ -5,6 +5,7 @@ import Lines from "@/components/ui/Lines";
 import ImagePlaceholder from "@/components/ui/ImagePlaceholder";
 import Reveal from "@/components/ui/Reveal";
 import { services } from "@/lib/content";
+import { Magnetic, NumberTicker } from "@/components/ui/Animations";
 
 export const metadata: Metadata = {
   title: "Intallo Services — Digital Systems for Modern Businesses",
@@ -36,12 +37,16 @@ export default function ServicesPage() {
               <h1 className="text-3xl md:text-5xl font-bold text-intallo-ink-teal leading-tight">
                 <Lines lines={services.hero.headingLines} />
               </h1>
-              <p className="text-intallo-muted text-base md:text-lg max-w-lg">
+              <p className="text-intallo-muted text-base md:text-lg max-w-lg leading-relaxed">
                 {services.hero.body}
               </p>
             </div>
-            <div>
-              <ImagePlaceholder src={services.hero.image} alt={services.hero.imageAlt} className="h-64 w-full" />
+            <div className="overflow-hidden rounded-2xl shadow-lg border border-intallo-border/50 group">
+              <ImagePlaceholder
+                src={services.hero.image}
+                alt={services.hero.imageAlt}
+                className="h-64 w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+              />
             </div>
           </Container>
         </section>
@@ -62,39 +67,44 @@ export default function ServicesPage() {
 
             <div className="space-y-16">
               {services.expertise.items.map((item, i) => (
-                <div
-                  key={i}
-                  className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center py-4"
-                >
-                  {/* Text column */}
-                  <div
-                    className={`space-y-4 ${
-                      item.imageSide === "left" ? "order-last md:order-last" : ""
-                    }`}
-                  >
-                    <span className="text-3xl md:text-4xl font-bold text-intallo-blue block">
-                      {item.number}
-                    </span>
-                    <h3 className="text-2xl font-semibold text-intallo-navy">{item.title}</h3>
-                    <p className="text-intallo-body text-base">{item.description}</p>
-                    {item.extra && (
-                      <p className="text-intallo-body text-base font-normal">{item.extra}</p>
-                    )}
-                    <div>
-                      <ActionLink
-                        href={item.cta.href}
-                        className="inline-block bg-intallo-blue text-white text-xs px-3 py-1.5 rounded-full font-medium"
-                      >
-                        {item.cta.label}
-                      </ActionLink>
+                <Reveal key={i} delay={0.1}>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center py-6 px-6 md:px-8 bg-white/70 hover:bg-white border border-intallo-border/60 hover:border-intallo-blue/40 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300">
+                    {/* Text column */}
+                    <div
+                      className={`space-y-4 ${
+                        item.imageSide === "left" ? "order-last md:order-last" : ""
+                      }`}
+                    >
+                      <span className="text-3xl md:text-4xl font-bold text-intallo-blue block">
+                        <NumberTicker value={parseInt(item.number, 10)} padZero={true} />
+                      </span>
+                      <h3 className="text-2xl font-semibold text-intallo-navy tracking-tight">{item.title}</h3>
+                      <p className="text-intallo-body text-base leading-relaxed">{item.description}</p>
+                      {item.extra && (
+                        <p className="text-intallo-body text-base font-normal leading-relaxed">{item.extra}</p>
+                      )}
+                      <div className="pt-2">
+                        <Magnetic strength={0.2}>
+                          <ActionLink
+                            href={item.cta.href}
+                            className="inline-block bg-intallo-blue text-white text-xs px-4 py-2 rounded-full font-medium hover:bg-blue-600 transition-colors shadow-sm"
+                          >
+                            {item.cta.label}
+                          </ActionLink>
+                        </Magnetic>
+                      </div>
+                    </div>
+
+                    {/* Image column */}
+                    <div className="overflow-hidden rounded-xl shadow-md group">
+                      <ImagePlaceholder
+                        src={item.image}
+                        alt={item.imageAlt}
+                        className="h-64 w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                      />
                     </div>
                   </div>
-
-                  {/* Image column */}
-                  <div>
-                    <ImagePlaceholder src={item.image} alt={item.imageAlt} className="h-64 w-full" />
-                  </div>
-                </div>
+                </Reveal>
               ))}
             </div>
           </Container>

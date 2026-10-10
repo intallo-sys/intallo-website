@@ -2,6 +2,8 @@
 
 import { useState, ChangeEvent, FormEvent } from "react";
 import { contact } from "@/lib/content";
+import { motion } from "framer-motion";
+import { CheckCircle2, Loader2 } from "lucide-react";
 
 interface FormDataState {
   name: string;
@@ -58,11 +60,25 @@ export default function ContactForm() {
 
   if (status === "success") {
     return (
-      <div className="bg-white border border-intallo-input-border p-8 md:p-10 rounded-2xl flex items-center justify-center text-center">
-        <p className="text-intallo-navy text-xl font-bold">
-          Thanks. Your message has been received.
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+        className="bg-white border border-intallo-input-border p-8 md:p-12 rounded-2xl flex flex-col items-center justify-center text-center space-y-4 shadow-sm"
+      >
+        <motion.div
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          transition={{ type: "spring", stiffness: 300, damping: 20, delay: 0.1 }}
+          className="w-16 h-16 bg-blue-50 text-intallo-blue rounded-full flex items-center justify-center"
+        >
+          <CheckCircle2 className="w-10 h-10" />
+        </motion.div>
+        <h4 className="text-intallo-navy text-xl font-bold">Message Sent Successfully</h4>
+        <p className="text-intallo-muted text-sm max-w-sm">
+          Thanks for reaching out! We&apos;ve received your note and will get back to you shortly.
         </p>
-      </div>
+      </motion.div>
     );
   }
 
@@ -102,7 +118,7 @@ export default function ContactForm() {
             required
             value={formData[field.name]}
             onChange={handleChange}
-            className="w-full bg-intallo-page border border-intallo-input-border rounded-lg px-4 py-3 text-sm text-intallo-body focus:outline-none focus:ring-2 focus:ring-intallo-blue"
+            className="w-full bg-intallo-page border border-intallo-input-border rounded-lg px-4 py-3 text-sm text-intallo-body focus:outline-none focus:ring-2 focus:ring-intallo-blue transition-all duration-200"
           />
         </div>
       ))}
@@ -119,7 +135,7 @@ export default function ContactForm() {
           required
           value={formData.message}
           onChange={handleChange}
-          className="w-full bg-intallo-page border border-intallo-input-border rounded-lg px-4 py-3 text-sm text-intallo-body focus:outline-none focus:ring-2 focus:ring-intallo-blue"
+          className="w-full bg-intallo-page border border-intallo-input-border rounded-lg px-4 py-3 text-sm text-intallo-body focus:outline-none focus:ring-2 focus:ring-intallo-blue transition-all duration-200"
         />
       </div>
 
@@ -129,13 +145,22 @@ export default function ContactForm() {
         </div>
       )}
 
-      <button
+      <motion.button
         type="submit"
         disabled={status === "submitting"}
-        className="w-full bg-intallo-blue hover:bg-blue-600 text-white font-semibold py-3.5 rounded-lg transition-colors disabled:opacity-50"
+        whileHover={{ scale: 1.01 }}
+        whileTap={{ scale: 0.98 }}
+        className="w-full bg-intallo-blue hover:bg-blue-600 text-white font-semibold py-3.5 rounded-lg transition-colors disabled:opacity-50 flex items-center justify-center gap-2 shadow-sm"
       >
-        {status === "submitting" ? form.submitting : form.submit}
-      </button>
+        {status === "submitting" ? (
+          <>
+            <Loader2 className="w-4 h-4 animate-spin" />
+            <span>{form.submitting}</span>
+          </>
+        ) : (
+          <span>{form.submit}</span>
+        )}
+      </motion.button>
     </form>
   );
 }

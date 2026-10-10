@@ -6,6 +6,7 @@ import ActionLink from "@/components/ui/ActionLink";
 import MobileMenu from "@/components/layout/MobileMenu";
 import { navLinks, headerCta } from "@/lib/content";
 import { motion } from "framer-motion";
+import { Magnetic } from "@/components/ui/Animations";
 
 export default function Header() {
   const [isHovered, setIsHovered] = useState(false);
@@ -35,17 +36,16 @@ export default function Header() {
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
           animate={{
-            y: isHovered ? -12 : 0,
             boxShadow: isHovered
-              ? "0 22px 50px rgba(0,0,0,0.22), 0 8px 24px rgba(0,0,0,0.14)"
-              : "0 10px 35px rgba(0,0,0,0.15), 0 4px 12px rgba(0,0,0,0.08)",
+              ? "0 16px 40px -10px rgba(6, 59, 115, 0.14), 0 6px 18px -4px rgba(0, 0, 0, 0.06)"
+              : "0 8px 30px -8px rgba(6, 59, 115, 0.08), 0 2px 8px -2px rgba(0, 0, 0, 0.04)",
+            borderColor: isHovered ? "rgba(26, 118, 255, 0.25)" : "rgba(255, 255, 255, 0.7)",
           }}
           transition={{
-            type: "spring",
-            stiffness: 300,
-            damping: 20,
+            duration: 0.25,
+            ease: "easeOut",
           }}
-          className="bg-white/95 backdrop-blur-md border border-white/60 rounded-full h-[80px] px-8 md:px-10 flex items-center justify-between transition-colors duration-300"
+          className="bg-white/95 backdrop-blur-md border rounded-full h-[80px] px-8 md:px-10 flex items-center justify-between transition-colors duration-300"
         >
           {/* Logo */}
           <ActionLink href="/" className="flex items-center hover:opacity-90 transition-opacity">
@@ -71,12 +71,14 @@ export default function Header() {
                 <span className="absolute -bottom-1 left-0 w-full h-[2px] bg-intallo-blue origin-bottom-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out"></span>
               </ActionLink>
             ))}
-            <ActionLink
-              href={headerCta.href}
-              className="bg-intallo-blue hover:bg-blue-600 text-white font-medium text-base px-6 py-2.5 rounded-full shadow-sm transition-all flex items-center justify-center min-w-[145px] h-[44px] hover:scale-[1.03] active:scale-[0.98] duration-200"
-            >
-              {headerCta.label}
-            </ActionLink>
+            <Magnetic strength={0.2}>
+              <ActionLink
+                href={headerCta.href}
+                className="bg-intallo-blue hover:bg-blue-600 text-white font-medium text-base px-6 py-2.5 rounded-full shadow-sm transition-all flex items-center justify-center min-w-[145px] h-[44px] hover:scale-[1.03] active:scale-[0.98] duration-200"
+              >
+                {headerCta.label}
+              </ActionLink>
+            </Magnetic>
           </nav>
 
           {/* Mobile Menu */}
