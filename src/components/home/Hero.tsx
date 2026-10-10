@@ -1,7 +1,6 @@
 "use client";
 
 import ActionLink from "@/components/ui/ActionLink";
-import { Magnetic } from "@/components/ui/Animations";
 import { motion } from "framer-motion";
 
 export default function Hero() {
@@ -61,26 +60,22 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
           className="mt-10 md:mt-12 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-5"
         >
-          <Magnetic strength={0.2}>
-            <ActionLink
-              href="/contact"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-[#0099FF] hover:bg-[#0088EE] text-white font-medium text-base px-8 py-4 rounded-full shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 min-w-[190px]"
-            >
-              <span>Start a Project</span>
-              <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-              </svg>
-            </ActionLink>
-          </Magnetic>
+          <ActionLink
+            href="/contact"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-[#0099FF] hover:bg-[#0088EE] text-white font-medium text-base px-8 py-4 rounded-full shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 min-w-[190px]"
+          >
+            <span>Start a Project</span>
+            <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </ActionLink>
 
-          <Magnetic strength={0.15}>
-            <ActionLink
-              href="#selected-work"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white/[0.05] hover:bg-white/[0.09] text-gray-200 hover:text-white border border-white/10 hover:border-white/20 font-medium text-base px-8 py-4 rounded-full backdrop-blur-md hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 min-w-[190px]"
-            >
-              <span>Explore Our Works</span>
-            </ActionLink>
-          </Magnetic>
+          <ActionLink
+            href="#selected-work"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white/[0.05] hover:bg-white/[0.09] text-gray-200 hover:text-white border border-white/10 hover:border-white/20 font-medium text-base px-8 py-4 rounded-full backdrop-blur-md hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 min-w-[190px]"
+          >
+            <span>Explore Our Works</span>
+          </ActionLink>
         </motion.div>
 
         {/* Engineering Proof Metrics Bar */}

@@ -282,40 +282,8 @@ export interface MagneticProps {
   strength?: number;
 }
 
-export function Magnetic({ children, className = "", strength = 0.25 }: MagneticProps) {
-  const ref = useRef<HTMLDivElement>(null);
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-
-  const springX = useSpring(x, { stiffness: 180, damping: 14, mass: 0.2 });
-  const springY = useSpring(y, { stiffness: 180, damping: 14, mass: 0.2 });
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!ref.current) return;
-    const { clientX, clientY } = e;
-    const { height, width, left, top } = ref.current.getBoundingClientRect();
-    const middleX = clientX - (left + width / 2);
-    const middleY = clientY - (top + height / 2);
-    x.set(middleX * strength);
-    y.set(middleY * strength);
-  };
-
-  const handleMouseLeave = () => {
-    x.set(0);
-    y.set(0);
-  };
-
-  return (
-    <motion.div
-      ref={ref}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      style={{ x: springX, y: springY }}
-      className={`inline-block ${className}`}
-    >
-      {children}
-    </motion.div>
-  );
+export function Magnetic({ children, className = "" }: MagneticProps) {
+  return <div className={`inline-block ${className}`}>{children}</div>;
 }
 
 export interface ScrollProgressProps {
@@ -333,7 +301,7 @@ export function ScrollProgress({ className = "" }: ScrollProgressProps) {
   return (
     <motion.div
       style={{ scaleX }}
-      className={`fixed top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-intallo-blue via-sky-400 to-intallo-navy origin-left z-[100] pointer-events-none ${className}`}
+      className={`fixed top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#0099FF] via-[#00E5FF] to-blue-400 origin-left z-[100] pointer-events-none shadow-[0_0_10px_#0099FF] ${className}`}
       aria-hidden="true"
     />
   );
@@ -429,4 +397,3 @@ export function SvgPathDraw({
     />
   );
 }
-

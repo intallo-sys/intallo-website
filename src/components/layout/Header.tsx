@@ -6,7 +6,6 @@ import ActionLink from "@/components/ui/ActionLink";
 import MobileMenu from "@/components/layout/MobileMenu";
 import { navLinks, headerCta } from "@/lib/content";
 import { motion } from "framer-motion";
-import { Magnetic } from "@/components/ui/Animations";
 
 export default function Header() {
   const [isHovered, setIsHovered] = useState(false);
@@ -79,14 +78,12 @@ export default function Header() {
                 <span className="absolute -bottom-0.5 left-0 w-full h-[2px] bg-[#0099FF] origin-bottom-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out rounded-full shadow-[0_0_8px_#0099FF]"></span>
               </ActionLink>
             ))}
-            <Magnetic strength={0.2}>
-              <ActionLink
-                href={headerCta.href}
-                className="bg-[#0099FF] hover:bg-[#0088EE] text-white font-medium text-sm lg:text-base px-6 py-2.5 rounded-full shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 transition-all flex items-center justify-center min-w-[145px] h-[44px] hover:scale-[1.03] active:scale-[0.98] duration-200"
-              >
-                {headerCta.label}
-              </ActionLink>
-            </Magnetic>
+            <ActionLink
+              href={headerCta.href}
+              className="bg-[#0099FF] hover:bg-[#0088EE] text-white font-medium text-sm lg:text-base px-6 py-2.5 rounded-full shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 transition-all flex items-center justify-center min-w-[145px] h-[44px] hover:scale-[1.03] active:scale-[0.98] duration-200"
+            >
+              {headerCta.label}
+            </ActionLink>
           </nav>
 
           {/* Mobile Menu */}

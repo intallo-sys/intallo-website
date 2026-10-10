@@ -1,7 +1,7 @@
 "use client";
 
 import ActionLink from "@/components/ui/ActionLink";
-import { Magnetic, SpotlightCard } from "@/components/ui/Animations";
+import { SpotlightCard } from "@/components/ui/Animations";
 import { motion } from "framer-motion";
 
 export default function CtaSection() {
@@ -43,27 +43,25 @@ export default function CtaSection() {
               </p>
 
               <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
-                <Magnetic strength={0.2}>
-                  <ActionLink
-                    href="/contact"
-                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-[#0099FF] hover:bg-[#0088EE] text-white font-medium text-base px-8 py-4 rounded-full shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 min-w-[200px]"
+                <ActionLink
+                  href="/contact"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-[#0099FF] hover:bg-[#0088EE] text-white font-medium text-base px-8 py-4 rounded-full shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 min-w-[200px]"
+                >
+                  <span>Start a Conversation</span>
+                  <svg
+                    className="w-4 h-4 transition-transform group-hover:translate-x-1"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
                   >
-                    <span>Start a Conversation</span>
-                    <svg
-                      className="w-4 h-4 transition-transform group-hover:translate-x-1"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M14 5l7 7m0 0l-7 7m7-7H3"
-                      />
-                    </svg>
-                  </ActionLink>
-                </Magnetic>
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M14 5l7 7m0 0l-7 7m7-7H3"
+                    />
+                  </svg>
+                </ActionLink>
               </div>
 
               {/* Status commitments */}
