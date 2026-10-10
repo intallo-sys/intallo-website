@@ -1,33 +1,69 @@
 @import "tailwindcss";
 
 @theme {
-  --color-intallo-blue: #1a76ff;        /* buttons, eyebrows, numbers, links on dark */
-  --color-intallo-navy: #063b73;        /* dark cards, Home CTA band, About mission & CTA bands */
-  --color-intallo-navy-deep: #05294f;   /* Contact left card */
-  --color-intallo-ink: #0b2a4a;         /* main headings */
-  --color-intallo-ink-teal: #173b4d;    /* Services hero H1 (slightly teal-dark) */
-  --color-intallo-body: #0f2236;        /* body text on white */
-  --color-intallo-muted: #6d8094;       /* gray body copy, footer text */
-  --color-intallo-page: #f4f9ff;        /* default page background (very light blue) */
-  --color-intallo-band: #eaf4ff;        /* About hero band, number badges */
-  --color-intallo-footer: #f9f9f6;      /* footer background (off-white, NOT pure white) */
-  --color-intallo-border: #d7e2ec;
-  --color-intallo-input-border: #bfd9f2;
-  --color-intallo-on-navy: #bcd0e6;     /* light blue-gray text on navy */
+  --color-intallo-blue: #1a76ff;        /* electric logo blue */
+  --color-intallo-royal: #0c34c5;       /* deep royal logo base */
+  --color-intallo-azure: #00a3ff;       /* apex azure arrow tip */
+  --color-intallo-navy: #0a0d14;        /* dark obsidian card surfaces */
+  --color-intallo-navy-deep: #05070a;   /* deepest dark backing */
+  --color-intallo-ink: #f8fafc;         /* bright headings on dark */
+  --color-intallo-ink-teal: #38bdf8;
+  --color-intallo-body: #94a3b8;        /* light slate text on dark */
+  --color-intallo-muted: #64748b;       /* muted text */
+  --color-intallo-page: #07090d;        /* deep obsidian space canvas */
+  --color-intallo-band: #10141c;        /* dark card / band */
+  --color-intallo-footer: #07090d;      /* dark footer */
+  --color-intallo-border: rgba(255, 255, 255, 0.08);
+  --color-intallo-input-border: rgba(255, 255, 255, 0.15);
+  --color-intallo-on-navy: #cbd5e1;
 
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-fraunces), serif;
 }
 
 html {
   scroll-behavior: smooth;
   overflow-x: hidden;
+  background-color: #07090d;
+  color-scheme: dark;
 }
 
 body {
-  background-color: var(--color-intallo-page);
-  color: var(--color-intallo-body);
+  background-color: #07090d;
+  color: #e2e8f0;
   font-family: var(--font-sans);
   overflow-x: hidden;
+}
+
+/* Visuvate-Inspired Editorial, Glass & Glow Utilities */
+.serif-accent {
+  font-family: var(--font-fraunces), serif;
+  font-style: italic;
+}
+
+.glass-card {
+  background: rgba(16, 20, 28, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.glass-card-hover {
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.glass-card-hover:hover {
+  border-color: rgba(26, 118, 255, 0.45);
+  box-shadow: 0 12px 40px -10px rgba(12, 52, 197, 0.35);
+}
+
+.glow-orb {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
 }
 
 @media (prefers-reduced-motion: reduce) {
