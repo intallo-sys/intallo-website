@@ -22,9 +22,15 @@ export async function sendContactNotification({
   company,
   message,
 }: SendContactNotificationParams): Promise<string | null> {
+  const fromAddress =
+    process.env.CONTACT_FROM_EMAIL ||
+    (process.env.RESEND_EMAIL_DOMAIN
+      ? `Intallo <notifications@${process.env.RESEND_EMAIL_DOMAIN}>`
+      : "onboarding@resend.dev");
+
   const { data, error } = await getClient().emails.send({
-    from: process.env.CONTACT_FROM_EMAIL || "onboarding@resend.dev",
-    to: process.env.CONTACT_RECIPIENT_EMAIL || "hello@intallo.com",
+    from: fromAddress,
+    to: process.env.CONTACT_RECIPIENT_EMAIL || "contact@intallo.in",
     replyTo: email, // visitor's address; From stays the verified INTALLO sender
     subject: `New project enquiry from ${oneLine(name)}`,
     // Plain text only: no raw HTML, so user input cannot inject markup.
