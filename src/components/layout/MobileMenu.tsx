@@ -38,7 +38,7 @@ export default function MobileMenu() {
         aria-expanded={open}
         aria-controls="mobile-menu"
         aria-label="Toggle Navigation Menu"
-        className="p-2 text-intallo-navy focus:outline-none focus:ring-2 focus:ring-intallo-blue rounded-full transition-colors hover:bg-intallo-band/50"
+        className="p-2 text-gray-200 focus:outline-none focus:ring-2 focus:ring-[#0099FF] rounded-full transition-colors hover:bg-white/10"
       >
         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           {open ? (
@@ -57,7 +57,7 @@ export default function MobileMenu() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -12, scale: 0.98 }}
             transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
-            className="absolute left-4 right-4 top-full mt-3 bg-white/95 backdrop-blur-md border border-intallo-border rounded-2xl p-6 shadow-2xl flex flex-col gap-4 z-50 overflow-hidden"
+            className="absolute left-4 right-4 top-full mt-3 bg-[#0D111A]/95 backdrop-blur-xl border border-white/10 rounded-2xl p-6 shadow-2xl shadow-black/80 flex flex-col gap-3 z-50 overflow-hidden"
           >
             {navLinks.map((link, idx) => (
               <motion.div
@@ -68,7 +68,7 @@ export default function MobileMenu() {
               >
                 <ActionLink
                   href={link.href}
-                  className="text-intallo-navy font-medium text-base py-2 hover:text-intallo-blue transition-colors block"
+                  className="text-gray-200 font-medium text-base py-2 hover:text-[#0099FF] transition-colors block border-b border-white/5"
                 >
                   {link.label}
                 </ActionLink>
@@ -78,14 +78,18 @@ export default function MobileMenu() {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: navLinks.length * 0.05, duration: 0.25 }}
-              className="pt-2"
+              className="pt-2 space-y-3"
             >
               <ActionLink
                 href={headerCta.href}
-                className="bg-intallo-blue text-white px-5 py-3 rounded-full text-center font-medium text-base hover:bg-blue-600 transition-colors shadow-sm block active:scale-98"
+                className="bg-[#0099FF] text-white px-5 py-3 rounded-full text-center font-medium text-base hover:bg-blue-500 transition-colors shadow-lg shadow-blue-500/25 block active:scale-98"
               >
                 {headerCta.label}
               </ActionLink>
+              <div className="flex items-center justify-center gap-2 pt-1 text-xs font-mono text-emerald-400">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_6px_#34d399]" />
+                <span>SYSTEMS ACTIVE</span>
+              </div>
             </motion.div>
           </motion.div>
         )}
