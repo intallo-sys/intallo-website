@@ -443,16 +443,63 @@ export const about = {
   },
   team: {
     eyebrow: "OUR TEAM",
-    heading: "The engineers behind Intallo",
-    intro: "Focused full-stack software engineers and automation architects.",
+    heading: "The engineers & leaders behind Intallo",
+    intro: "A dedicated team of systems architects, technical leads, and operational specialists building high-impact digital solutions.",
     members: [
       {
-        name: "Engineering Team",
-        role: "Software & Systems Architecture",
-        description: "Designing reliable digital systems and custom operational platforms.",
-        descriptionLines: ["Designing reliable digital systems", "and custom operational platforms", "at Intallo."],
-        photo: "/images/about/team-office.jpg",
-        photoAlt: "Intallo engineering team",
+        name: "Shashidhar Pawadashetti",
+        role: "Founder & CEO, Project Manager",
+        description:
+          "Directs company vision, digital strategy, client collaboration, and end-to-end project execution for enterprise and bespoke operational solutions.",
+        descriptionLines: [
+          "Directs company vision,",
+          "digital strategy, and",
+          "end-to-end project execution.",
+        ],
+        photo: "/images/team/shashidhar.png",
+        photoAlt: "Shashidhar Pawadashetti, Founder & CEO, Project Manager at Intallo",
+        links: { linkedin: null, github: null, email: "mailto:contact@intallo.in" },
+      },
+      {
+        name: "Sujal Vaidya",
+        role: "CTO",
+        description:
+          "Architects core technical strategy, backend infrastructure, cloud systems, and high-performance automation engines across client platforms.",
+        descriptionLines: [
+          "Architects technical strategy,",
+          "cloud infrastructure, and",
+          "high-performance automation engines.",
+        ],
+        photo: "/images/team/sujal.jpeg",
+        photoAlt: "Sujal Vaidya, CTO at Intallo",
+        links: { linkedin: null, github: null, email: "mailto:contact@intallo.in" },
+      },
+      {
+        name: "Ujwal Bilagi",
+        role: "Technical Lead",
+        description:
+          "Leads engineering implementation, full-stack application development, software design patterns, and code quality standards.",
+        descriptionLines: [
+          "Leads engineering implementation,",
+          "full-stack application development,",
+          "and code quality standards.",
+        ],
+        photo: "/images/team/ujwal.jpeg",
+        photoAlt: "Ujwal Bilagi, Technical Lead at Intallo",
+        links: { linkedin: null, github: null, email: "mailto:contact@intallo.in" },
+      },
+      {
+        name: "Jeevan Bennur",
+        role: "Finance Lead",
+        description:
+          "Manages financial modeling, fiscal planning, commercial contracts, operational budgets, and resource allocation.",
+        descriptionLines: [
+          "Manages financial modeling,",
+          "commercial contracts, and",
+          "operational fiscal planning.",
+        ],
+        photo: "/images/team/jeevan.jpeg",
+        photoAlt: "Jeevan Bennur, Finance Lead at Intallo",
         links: { linkedin: null, github: null, email: "mailto:contact@intallo.in" },
       },
     ],

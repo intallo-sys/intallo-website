@@ -213,28 +213,30 @@ export default function AboutPage() {
               <SpotlightCard
                 key={i}
                 spotlightColor="rgba(0, 153, 255, 0.14)"
-                className="glass-card glass-card-hover rounded-2xl p-5 border border-white/[0.08] space-y-4 group"
+                className="glass-card glass-card-hover rounded-2xl p-5 border border-white/[0.08] flex flex-col justify-between group"
               >
-                <div className="relative rounded-xl overflow-hidden aspect-[4/3] bg-black/40 border border-white/5">
-                  <Image
-                    src={member.photo}
-                    alt={member.photoAlt}
-                    fill
-                    className="object-cover object-center grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105"
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#07090D]/90 via-transparent to-transparent pointer-events-none" />
+                <div className="space-y-4">
+                  <div className="relative rounded-xl overflow-hidden aspect-[4/5] bg-black/40 border border-white/5">
+                    <Image
+                      src={member.photo}
+                      alt={member.photoAlt}
+                      fill
+                      className="object-cover object-top grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#07090D]/90 via-transparent to-transparent pointer-events-none" />
+                  </div>
+
+                  <div>
+                    <h3 className="text-base font-bold text-white">{member.name}</h3>
+                    <p className="text-xs font-mono text-[#0099FF] mt-0.5">{member.role}</p>
+                    <p className="text-xs text-gray-400 mt-2 leading-relaxed">
+                      {member.description}
+                    </p>
+                  </div>
                 </div>
 
-                <div>
-                  <h3 className="text-base font-bold text-white">{member.name}</h3>
-                  <p className="text-xs font-mono text-[#0099FF] mt-0.5">{member.role}</p>
-                  <p className="text-xs text-gray-400 mt-2 leading-relaxed">
-                    {member.description}
-                  </p>
-                </div>
-
-                <div className="pt-2 border-t border-white/[0.06] flex items-center gap-3 text-xs font-mono text-gray-400">
+                <div className="pt-4 mt-4 border-t border-white/[0.06] flex items-center gap-3 text-xs font-mono text-gray-400">
                   <ActionLink href={member.links.email} className="hover:text-[#0099FF] transition-colors">
                     Contact
                   </ActionLink>
