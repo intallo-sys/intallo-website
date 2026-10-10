@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { ScrollProgress } from "@/components/ui/Animations";
+import { Analytics } from "@vercel/analytics/react";
 import { ReactNode } from "react";
 
 const inter = Inter({
@@ -95,6 +96,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <Header />
         <main className="flex-grow">{children}</main>
         <Footer />
+        <Analytics />
       </body>
     </html>
   );
