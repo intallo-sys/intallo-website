@@ -6,10 +6,10 @@ export const brand = {
 
 // Header navigation (same on all pages, in this order)
 export const navLinks = [
-  { label: "Solutions", href: "/services" },
+  { label: "Home", href: "/" },
   { label: "Services", href: "/services" },
-  { label: "Contact", href: "/contact" },
   { label: "About", href: "/about" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export const headerCta = { label: "Start a Project", href: "/contact" };
