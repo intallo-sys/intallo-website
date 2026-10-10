@@ -17,6 +17,18 @@ export const metadata: Metadata = {
   title: "Intallo — Digital Systems for Modern Businesses",
   description:
     "We design simple, reliable digital systems that help modern businesses work smarter, serve customers better, and grow with confidence.",
+  icons: {
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/icon.png", type: "image/png" },
+      { url: "/logo.png", type: "image/png" },
+    ],
+    apple: [
+      { url: "/apple-icon.png" },
+      { url: "/logo.png" },
+    ],
+    shortcut: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {

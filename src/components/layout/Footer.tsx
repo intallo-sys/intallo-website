@@ -14,7 +14,7 @@ export default function Footer() {
               <Magnetic strength={0.15}>
                 <ActionLink href="/" className="inline-block hover:opacity-90 transition-opacity">
                   <Image
-                    src="/images/brand/logo.png"
+                    src="/logo.png"
                     alt="Intallo Logo"
                     width={130}
                     height={32}

@@ -50,7 +50,7 @@ export default function Header() {
           {/* Logo */}
           <ActionLink href="/" className="flex items-center hover:opacity-90 transition-opacity">
             <Image
-              src="/images/brand/logo.png"
+              src="/logo.png"
               alt="Intallo Logo"
               width={185}
               height={46}
