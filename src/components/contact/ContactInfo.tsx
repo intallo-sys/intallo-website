@@ -1,10 +1,14 @@
 import ActionLink from "@/components/ui/ActionLink";
 import { contact } from "@/lib/content";
+import { SpotlightCard } from "@/components/ui/Animations";
 
 export default function ContactInfo() {
   const { info } = contact;
   return (
-    <div className="bg-intallo-navy-deep text-white p-8 md:p-10 rounded-2xl space-y-8 flex flex-col justify-between">
+    <SpotlightCard
+      spotlightColor="rgba(26, 118, 255, 0.22)"
+      className="bg-intallo-navy-deep text-white p-8 md:p-10 rounded-2xl space-y-8 flex flex-col justify-between border border-white/10 shadow-xl"
+    >
       <div className="space-y-6">
         <p className="text-intallo-blue font-semibold text-sm">{info.cardLabel}</p>
         <h3 className="text-xl font-bold">{info.subheading}</h3>
@@ -36,6 +40,6 @@ export default function ContactInfo() {
           </div>
         </div>
       </div>
-    </div>
+    </SpotlightCard>
   );
 }

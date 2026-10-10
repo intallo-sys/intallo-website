@@ -1,6 +1,7 @@
 import Image from "next/image";
 import ActionLink from "@/components/ui/ActionLink";
 import { footer } from "@/lib/content";
+import { Magnetic } from "@/components/ui/Animations";
 
 export default function Footer() {
   return (
@@ -10,15 +11,17 @@ export default function Footer() {
           {/* Left Column */}
           <div className="flex flex-col justify-between space-y-6 md:space-y-0 max-w-xs">
             <div className="space-y-3">
-              <ActionLink href="/" className="inline-block">
-                <Image
-                  src="/images/brand/logo.png"
-                  alt="Intallo Logo"
-                  width={130}
-                  height={32}
-                  className="h-8 w-auto object-contain"
-                />
-              </ActionLink>
+              <Magnetic strength={0.15}>
+                <ActionLink href="/" className="inline-block hover:opacity-90 transition-opacity">
+                  <Image
+                    src="/images/brand/logo.png"
+                    alt="Intallo Logo"
+                    width={130}
+                    height={32}
+                    className="h-8 w-auto object-contain"
+                  />
+                </ActionLink>
+              </Magnetic>
               <p className="text-sm text-intallo-muted">{footer.tagline}</p>
             </div>
             <p className="text-xs text-intallo-muted pt-4 md:pt-8">{footer.copyright}</p>

@@ -6,6 +6,7 @@ import ActionLink from "@/components/ui/ActionLink";
 import MobileMenu from "@/components/layout/MobileMenu";
 import { navLinks, headerCta } from "@/lib/content";
 import { motion } from "framer-motion";
+import { Magnetic } from "@/components/ui/Animations";
 
 export default function Header() {
   const [isHovered, setIsHovered] = useState(false);
@@ -71,12 +72,14 @@ export default function Header() {
                 <span className="absolute -bottom-1 left-0 w-full h-[2px] bg-intallo-blue origin-bottom-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out"></span>
               </ActionLink>
             ))}
-            <ActionLink
-              href={headerCta.href}
-              className="bg-intallo-blue hover:bg-blue-600 text-white font-medium text-base px-6 py-2.5 rounded-full shadow-sm transition-all flex items-center justify-center min-w-[145px] h-[44px] hover:scale-[1.03] active:scale-[0.98] duration-200"
-            >
-              {headerCta.label}
-            </ActionLink>
+            <Magnetic strength={0.2}>
+              <ActionLink
+                href={headerCta.href}
+                className="bg-intallo-blue hover:bg-blue-600 text-white font-medium text-base px-6 py-2.5 rounded-full shadow-sm transition-all flex items-center justify-center min-w-[145px] h-[44px] hover:scale-[1.03] active:scale-[0.98] duration-200"
+              >
+                {headerCta.label}
+              </ActionLink>
+            </Magnetic>
           </nav>
 
           {/* Mobile Menu */}
