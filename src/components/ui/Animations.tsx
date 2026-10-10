@@ -301,7 +301,7 @@ export function ScrollProgress({ className = "" }: ScrollProgressProps) {
   return (
     <motion.div
       style={{ scaleX }}
-      className={`fixed top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#0099FF] via-[#00E5FF] to-blue-400 origin-left z-[100] pointer-events-none shadow-[0_0_10px_#0099FF] ${className}`}
+      className={`fixed top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#0C34C5] via-[#1A76FF] to-[#00A3FF] origin-left z-[250] pointer-events-none shadow-[0_0_10px_#1A76FF] ${className}`}
       aria-hidden="true"
     />
   );

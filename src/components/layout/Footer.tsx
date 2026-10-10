@@ -13,14 +13,15 @@ export default function Footer() {
           {/* Left Column */}
           <div className="flex flex-col justify-between space-y-6 md:space-y-0 max-w-xs">
             <div className="space-y-3">
-              <ActionLink href="/" className="inline-block hover:opacity-100 transition-opacity">
+              <ActionLink href="/" className="inline-flex items-center gap-2.5 hover:opacity-100 transition-opacity">
                 <Image
-                  src="/logo.png"
+                  src="/images/brand/intallo-mark.png"
                   alt="Intallo Logo"
-                  width={130}
+                  width={38}
                   height={32}
-                  className="h-8 w-auto object-contain brightness-0 invert opacity-90 hover:opacity-100 transition-opacity"
+                  className="h-8 w-auto object-contain"
                 />
+                <span className="text-xl font-bold tracking-tight text-white">Intallo</span>
               </ActionLink>
               <p className="text-sm text-gray-400">{footer.tagline}</p>
             </div>

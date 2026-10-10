@@ -21,9 +21,13 @@ const fraunces = Fraunces({
 });
 
 export const metadata: Metadata = {
-  title: "Intallo — Digital Systems for Modern Businesses",
+  metadataBase: new URL("https://intallo.in"),
+  title: {
+    default: "Intallo — Turn Manual Work Into Digital Solutions",
+    template: "%s | Intallo",
+  },
   description:
-    "We design simple, reliable digital systems that help modern businesses work smarter, serve customers better, and grow with confidence.",
+    "We engineer high-performance web platforms, custom operational software, and automated workflows that eliminate manual bottlenecks for growing businesses.",
   icons: {
     icon: [
       { url: "/favicon.ico" },
@@ -36,11 +40,56 @@ export const metadata: Metadata = {
     ],
     shortcut: "/favicon.ico",
   },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://intallo.in",
+    siteName: "Intallo",
+    title: "Intallo — Turn Manual Work Into Digital Solutions",
+    description:
+      "We engineer high-performance web platforms, custom operational software, and automated workflows that eliminate manual bottlenecks for growing businesses.",
+    images: [
+      {
+        url: "/logo.png",
+        width: 1024,
+        height: 558,
+        alt: "Intallo Logo",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Intallo — Turn Manual Work Into Digital Solutions",
+    description:
+      "We engineer high-performance web platforms, custom operational software, and automated workflows that eliminate manual bottlenecks for growing businesses.",
+    images: ["/logo.png"],
+  },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Intallo",
+  url: "https://intallo.in",
+  logo: "https://intallo.in/logo.png",
+  description:
+    "Turn Manual Work Into Digital Solutions. Intallo engineers high-performance web platforms, custom operational software, and automated workflows for growing businesses.",
+  contactPoint: {
+    "@type": "ContactPoint",
+    email: "contact@intallo.in",
+    contactType: "customer service",
+  },
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className={`${inter.variable} ${fraunces.variable} dark`}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body className="min-h-screen antialiased flex flex-col justify-between bg-[#07090D] text-[#E2E8F0]">
         <ScrollProgress />
         <Header />

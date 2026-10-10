@@ -1,7 +1,9 @@
 @import "tailwindcss";
 
 @theme {
-  --color-intallo-blue: #0099ff;        /* electric blue buttons & glow */
+  --color-intallo-blue: #1a76ff;        /* electric logo blue */
+  --color-intallo-royal: #0c34c5;       /* deep royal logo base */
+  --color-intallo-azure: #00a3ff;       /* apex azure arrow tip */
   --color-intallo-navy: #0a0d14;        /* dark obsidian card surfaces */
   --color-intallo-navy-deep: #05070a;   /* deepest dark backing */
   --color-intallo-ink: #f8fafc;         /* bright headings on dark */
@@ -52,8 +54,8 @@ body {
 }
 
 .glass-card-hover:hover {
-  border-color: rgba(0, 153, 255, 0.35);
-  box-shadow: 0 12px 40px -10px rgba(0, 153, 255, 0.22);
+  border-color: rgba(26, 118, 255, 0.45);
+  box-shadow: 0 12px 40px -10px rgba(12, 52, 197, 0.35);
 }
 
 .glow-orb {

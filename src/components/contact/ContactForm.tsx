@@ -140,7 +140,7 @@ export default function ContactForm() {
           required
           value={formData.message}
           onChange={handleChange}
-          className="w-full bg-[#0D111A] border border-white/10 rounded-xl px-4 py-3.5 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-[#0099FF] focus:ring-1 focus:ring-[#0099FF] transition-all resize-none"
+          className="w-full bg-[#0D111A] border border-white/10 rounded-xl px-4 py-3.5 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-[#1A76FF] focus:ring-1 focus:ring-[#1A76FF] transition-all resize-none"
         />
       </div>
 
@@ -153,7 +153,7 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={status === "submitting"}
-        className="w-full bg-[#0099FF] hover:bg-[#0088EE] text-white font-medium py-4 rounded-xl shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 hover:scale-[1.01] active:scale-[0.98] transition-all duration-200 disabled:opacity-50 flex items-center justify-center gap-2 cursor-pointer"
+        className="w-full bg-gradient-to-r from-[#0C34C5] to-[#1A76FF] hover:from-[#002FA7] hover:to-[#0066FF] text-white font-medium py-4 rounded-xl shadow-lg shadow-blue-600/30 hover:scale-[1.01] active:scale-[0.98] transition-all duration-200 disabled:opacity-50 flex items-center justify-center gap-2 cursor-pointer"
       >
         {status === "submitting" ? (
           <>

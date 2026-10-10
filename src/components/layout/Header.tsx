@@ -47,15 +47,16 @@ export default function Header() {
         >
           {/* Column 1: Logo & Systems Beacon */}
           <div className={`flex items-center gap-3.5 justify-self-start ${isFloating ? "min-[981px]:pl-2" : ""}`}>
-            <ActionLink href="/" aria-label="Intallo — Home" className="flex items-center hover:opacity-90 transition-opacity">
+            <ActionLink href="/" aria-label="Intallo — Home" className="flex items-center gap-2.5 hover:opacity-90 transition-opacity">
               <Image
-                src="/logo.png"
+                src="/images/brand/intallo-mark.png"
                 alt="Intallo Logo"
-                width={130}
-                height={32}
+                width={36}
+                height={30}
                 priority
-                className="h-7 sm:h-8 w-auto object-contain brightness-0 invert opacity-95 hover:opacity-100 transition-opacity"
+                className="h-7 sm:h-8 w-auto object-contain"
               />
+              <span className="text-[19px] sm:text-[20px] font-bold tracking-tight text-white">Intallo</span>
             </ActionLink>
 
             {/* Active Systems Beacon Pill */}
@@ -87,7 +88,7 @@ export default function Header() {
                   {isActive && (
                     <span
                       aria-hidden="true"
-                      className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-[#0099FF] shadow-[0_0_6px_#0099FF]"
+                      className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-[#1A76FF] shadow-[0_0_6px_#1A76FF]"
                     />
                   )}
                 </ActionLink>

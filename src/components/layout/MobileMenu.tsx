@@ -72,7 +72,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                   >
                     <span
                       className={`w-6 shrink-0 font-mono text-xs transition-colors ${
-                        isActive ? "text-[#0099FF]" : "text-gray-500 group-hover:text-gray-400"
+                        isActive ? "text-[#1A76FF]" : "text-gray-500 group-hover:text-gray-400"
                       }`}
                     >
                       {String(idx + 1).padStart(2, "0")}
@@ -89,7 +89,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                     {isActive && (
                       <span
                         aria-hidden="true"
-                        className="ml-auto w-2 h-2 self-center rounded-full bg-[#0099FF] shadow-[0_0_8px_#0099FF]"
+                        className="ml-auto w-2 h-2 self-center rounded-full bg-[#1A76FF] shadow-[0_0_8px_#1A76FF]"
                       />
                     )}
                   </ActionLink>
@@ -114,8 +114,8 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             </ActionLink>
 
             <div className="flex items-center justify-between text-xs font-mono text-gray-500 pt-2 border-t border-white/[0.06]">
-              <a href="mailto:hello@intallo.com" className="hover:text-white transition-colors">
-                hello@intallo.com
+              <a href="mailto:contact@intallo.in" className="hover:text-white transition-colors">
+                contact@intallo.in
               </a>
               <div className="flex items-center gap-2 text-emerald-400">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_6px_#34d399]" />

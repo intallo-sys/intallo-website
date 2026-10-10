@@ -34,7 +34,7 @@ export default function ContactInfo() {
                 key={i}
                 className="flex items-start gap-4 p-4 rounded-2xl bg-white/[0.02] border border-white/[0.06]"
               >
-                <div className="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-[#0099FF] shrink-0 mt-0.5">
+                <div className="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-[#1A76FF] shrink-0 mt-0.5">
                   <Icon className="w-4 h-4" />
                 </div>
                 <div>
@@ -44,7 +44,7 @@ export default function ContactInfo() {
                   {item.href ? (
                     <ActionLink
                       href={item.href}
-                      className="text-sm sm:text-base font-medium text-white hover:text-[#0099FF] transition-colors"
+                      className="text-sm sm:text-base font-medium text-white hover:text-[#1A76FF] transition-colors"
                     >
                       {item.value}
                     </ActionLink>
