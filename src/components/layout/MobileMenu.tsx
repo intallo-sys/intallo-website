@@ -113,11 +113,19 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
               {headerCta.label}
             </ActionLink>
 
-            <div className="flex items-center justify-between text-xs font-mono text-gray-500 pt-2 border-t border-white/[0.06]">
-              <a href="mailto:contact@intallo.in" className="hover:text-white transition-colors">
-                contact@intallo.in
-              </a>
-              <span className="text-gray-400">Bengaluru, India</span>
+            <div className="flex flex-col gap-2 text-xs font-mono text-gray-500 pt-2 border-t border-white/[0.06]">
+              <div className="flex items-center justify-between">
+                <a href="mailto:contact@intallo.in" onClick={onClose} className="hover:text-white transition-colors">
+                  contact@intallo.in
+                </a>
+                <span className="text-gray-400">Bengaluru, India</span>
+              </div>
+              <div className="flex items-center justify-between text-[11px] text-gray-400">
+                <span>Direct Line:</span>
+                <a href="tel:+916363620308" onClick={onClose} className="text-blue-400 hover:underline">
+                  +91 63636 20308
+                </a>
+              </div>
             </div>
           </motion.div>
         </motion.div>

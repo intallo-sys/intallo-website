@@ -95,11 +95,32 @@ const jsonLd = {
     addressRegion: "Karnataka",
     addressCountry: "IN",
   },
-  contactPoint: {
-    "@type": "ContactPoint",
-    email: "contact@intallo.in",
-    contactType: "customer service",
-  },
+  contactPoint: [
+    {
+      "@type": "ContactPoint",
+      telephone: "+91 63636 20308",
+      contactType: "customer service",
+      areaServed: "IN",
+    },
+    {
+      "@type": "ContactPoint",
+      telephone: "+91 76249 55229",
+      contactType: "technical support",
+      areaServed: "IN",
+    },
+    {
+      "@type": "ContactPoint",
+      telephone: "+91 94831 65634",
+      contactType: "sales",
+      areaServed: "IN",
+    },
+    {
+      "@type": "ContactPoint",
+      telephone: "+91 84314 98500",
+      contactType: "billing",
+      areaServed: "IN",
+    },
+  ],
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
