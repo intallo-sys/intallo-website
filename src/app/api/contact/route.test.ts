@@ -14,6 +14,8 @@ vi.mock("@/lib/email/client", () => ({
   sendContactNotification: vi.fn().mockResolvedValue("msg_mock123"),
 }));
 
+import { prisma } from "@/lib/db/client";
+import { sendContactNotification } from "@/lib/email/client";
 import { POST } from "./route";
 
 describe("POST /api/contact", () => {
@@ -69,5 +71,24 @@ describe("POST /api/contact", () => {
     const data = await res.json();
     expect(res.status).toBe(400);
     expect(data.success).toBe(false);
+  });
+
+  it("saves lead to database and returns 200 even if email notification fails", async () => {
+    vi.mocked(sendContactNotification).mockRejectedValueOnce(new Error("SMTP down"));
+    const payload = {
+      name: "Fallback Test User",
+      email: "fallback@example.com",
+      company: "Fallback Inc",
+      message: "Testing email failure fallback behavior.",
+      website: "",
+    };
+    const res = await POST(makeReq(payload));
+    const data = await res.json();
+    expect(res.status).toBe(200);
+    expect(data.success).toBe(true);
+    expect(prisma.contactSubmission.update).toHaveBeenCalledWith({
+      where: { id: "sub_mock123" },
+      data: { status: "EMAIL_FAILED" },
+    });
   });
 });

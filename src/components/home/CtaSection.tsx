@@ -65,7 +65,7 @@ export default function CtaSection() {
               </div>
               <div className="flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-purple-400" />
-                <span>100% Client-Owned IP</span>
+                <span>You Own What We Build</span>
               </div>
             </div>
           </div>

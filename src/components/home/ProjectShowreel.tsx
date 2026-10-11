@@ -101,10 +101,10 @@ export default function ProjectShowreel() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0D111A] via-transparent to-black/30" />
                 
-                {/* Live Demo Status Badge */}
-                <div className="absolute top-4 left-4 flex items-center gap-2 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/15 text-[11px] font-mono tracking-wider text-white">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_6px_#34d399]" />
-                  <span>INTERACTIVE DEMO</span>
+                {/* Concept Status Badge */}
+                <div className="absolute top-4 left-4 flex items-center gap-2 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/15 text-[11px] font-mono tracking-wider text-blue-300">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#1A76FF] shadow-[0_0_6px_#1A76FF]" />
+                  <span>CONCEPT PREVIEW</span>
                 </div>
 
                 <div className="absolute top-4 right-4 text-xs font-mono text-gray-400 bg-black/60 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/10">

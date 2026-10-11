@@ -10,19 +10,24 @@ import CtaSection from "@/components/home/CtaSection";
 export const metadata: Metadata = {
   title: "About Intallo — Systems Builders & Software Engineering",
   description:
-    "Learn about Intallo: our engineering philosophy, mission, and the builders crafting scalable digital systems for modern businesses.",
+    "Learn about Intallo: our engineering philosophy, mission, and the builders crafting scalable digital systems for modern businesses in Bengaluru, India.",
+  alternates: {
+    canonical: "https://intallo.in/about",
+  },
   openGraph: {
     title: "About Intallo — Systems Builders & Software Engineering",
     description:
-      "Learn about Intallo: our engineering philosophy, mission, and the builders crafting scalable digital systems for modern businesses.",
+      "Learn about Intallo: our engineering philosophy, mission, and the builders crafting scalable digital systems for modern businesses in Bengaluru, India.",
     type: "website",
     siteName: "Intallo",
+    url: "https://intallo.in/about",
+    locale: "en_IN",
   },
   twitter: {
     card: "summary_large_image",
     title: "About Intallo — Systems Builders & Software Engineering",
     description:
-      "Learn about Intallo: our engineering philosophy, mission, and the builders crafting scalable digital systems for modern businesses.",
+      "Learn about Intallo: our engineering philosophy, mission, and the builders crafting scalable digital systems for modern businesses in Bengaluru, India.",
   },
 };
 

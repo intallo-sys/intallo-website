@@ -3,11 +3,15 @@ import ActionLink from "@/components/ui/ActionLink";
 
 export const metadata: Metadata = {
   title: "Privacy Policy — Intallo",
-  description: "Privacy Policy and data governance practices for Intallo and intallo.in.",
+  description: "Privacy Policy and data governance practices under DPDP Act for Intallo Technologies and intallo.in.",
+  alternates: {
+    canonical: "https://intallo.in/privacy-policy",
+  },
   openGraph: {
     title: "Privacy Policy — Intallo",
-    description: "Privacy Policy and data governance practices for Intallo and intallo.in.",
+    description: "Privacy Policy and data governance practices under DPDP Act for Intallo Technologies and intallo.in.",
     url: "https://intallo.in/privacy-policy",
+    locale: "en_IN",
   },
 };
 
@@ -18,27 +22,30 @@ export default function PrivacyPolicyPage() {
         <div className="mb-12">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 text-xs font-mono tracking-wider text-blue-300 uppercase mb-4">
             <span className="w-1.5 h-1.5 rounded-full bg-[#1A76FF]" />
-            <span>LEGAL & COMPLIANCE</span>
+            <span>LEGAL &amp; COMPLIANCE</span>
           </div>
           <h1 className="text-4xl sm:text-5xl font-bold text-white tracking-tight">
             Privacy Policy
           </h1>
           <p className="mt-3 text-sm font-mono text-gray-500">
-            Last Updated: October 2026 // Canonical: https://intallo.in
+            Last Updated: October 2026
           </p>
         </div>
 
         <div className="space-y-8 text-sm sm:text-base leading-relaxed text-gray-400">
           <section className="space-y-3">
             <h2 className="text-xl font-bold text-white tracking-tight">
-              1. Overview & Commitment
+              1. Overview &amp; Data Fiduciary Details
             </h2>
             <p>
-              Intallo (&quot;we&quot;, &quot;our&quot;, or &quot;us&quot;) operates the website located at{" "}
+              Intallo Technologies (&quot;Intallo&quot;, &quot;we&quot;, &quot;our&quot;, or &quot;us&quot;) operates the website located at{" "}
               <ActionLink href="https://intallo.in" className="text-[#1A76FF] hover:underline">
                 https://intallo.in
               </ActionLink>{" "}
-              and provides custom software development, digital platforms, and automation engineering services. We are dedicated to maintaining the confidentiality, integrity, and security of any personal and business data entrusted to us.
+              and provides software engineering, operational systems development, and digital automation services. Under the Digital Personal Data Protection Act, 2023 (DPDP Act) of India, Intallo Technologies acts as the Data Fiduciary for personal data collected through this website.
+            </p>
+            <p>
+              We are dedicated to safeguarding your digital privacy and handling personal and commercial information with strict transparency, integrity, and security.
             </p>
           </section>
 
@@ -46,67 +53,108 @@ export default function PrivacyPolicyPage() {
             <h2 className="text-xl font-bold text-white tracking-tight">
               2. Information We Collect
             </h2>
-            <p>We collect information in the following limited contexts:</p>
+            <p>We collect information strictly when necessary to deliver services and respond to communications:</p>
             <ul className="list-disc pl-6 space-y-2">
               <li>
-                <strong className="text-white">Project Enquiries & Communications:</strong> When you submit a project enquiry through our contact forms or email us at{" "}
+                <strong className="text-white">Project Enquiries &amp; Contact Submissions:</strong> When you submit an enquiry via our contact form or email us at{" "}
                 <ActionLink href="mailto:contact@intallo.in" className="text-[#1A76FF] hover:underline">
                   contact@intallo.in
                 </ActionLink>
-                , we collect your name, business email address, company name, and project requirements.
+                , we collect your name, business email address, company name, and project scope details.
               </li>
               <li>
-                <strong className="text-white">Technical Diagnostics:</strong> We collect non-personally identifiable server telemetry, including browser type, referring URLs, and approximate geographic region, to ensure uptime, detect spam, and harden application security.
+                <strong className="text-white">Security &amp; Rate-Limiting Telemetry:</strong> To prevent abuse, spam, and denial-of-service attempts, incoming requests are checked against an irreversibly hashed IP address (generated using an HMAC-SHA256 cryptographic secret). We do not store raw IP addresses in our application database.
               </li>
               <li>
-                <strong className="text-white">Spam Prevention:</strong> We use Cloudflare Turnstile to protect enquiry forms from automated abuse without tracking user browsing habits across third-party websites.
+                <strong className="text-white">Usage &amp; Performance Analytics:</strong> We collect aggregated, non-personally identifiable browser telemetry (including approximate geographic location, device class, and referral source) to monitor system performance and improve user experience.
               </li>
             </ul>
           </section>
 
           <section className="space-y-3">
             <h2 className="text-xl font-bold text-white tracking-tight">
-              3. Purpose of Processing
+              3. Third-Party Service Providers (Data Processors)
             </h2>
-            <p>We process collected data exclusively to:</p>
+            <p>
+              We partner with vetted cloud infrastructure providers to host and operate our digital services. These processors process data strictly on our instructions:
+            </p>
             <ul className="list-disc pl-6 space-y-2">
-              <li>Respond to your software enquiries and provide detailed technical proposals.</li>
-              <li>Execute contractual software engineering and maintenance obligations.</li>
-              <li>Safeguard our infrastructure from denial-of-service attacks and fraudulent activity.</li>
+              <li>
+                <strong className="text-white">Vercel Inc.:</strong> Edge cloud hosting, serverless compute runtime, and privacy-preserving web vitals analytics.
+              </li>
+              <li>
+                <strong className="text-white">Resend Inc.:</strong> Transactional email infrastructure utilized to securely dispatch project notifications to our team.
+              </li>
+              <li>
+                <strong className="text-white">Prisma Postgres:</strong> Managed cloud database infrastructure utilized to store validated contact enquiries and dispatch audit logs.
+              </li>
+              <li>
+                <strong className="text-white">Microsoft Clarity:</strong> Behavioral session telemetry and heatmap analytics to understand website usability without selling data.
+              </li>
             </ul>
-            <p>We do NOT sell, rent, broker, or monetize client or visitor data to advertisers or third parties.</p>
+            <p>We do NOT sell, rent, monetize, or trade client or visitor personal data to any advertisers, data brokers, or third parties.</p>
           </section>
 
           <section className="space-y-3">
             <h2 className="text-xl font-bold text-white tracking-tight">
-              4. Data Retention & Security
+              4. Data Retention Policy
             </h2>
             <p>
-              We enforce industry-standard security safeguards including TLS 1.3 encryption in transit, strict database access controls, and least-privilege administrative principles. Enquiry records are retained only for as long as necessary to facilitate project communication or satisfy legal obligations.
+              In compliance with the DPDP Act, personal data is retained only for as long as necessary to fulfill the purposes for which it was collected:
+            </p>
+            <ul className="list-disc pl-6 space-y-2">
+              <li>
+                <strong className="text-white">Project Enquiries:</strong> Inbound enquiry data is retained for a maximum period of twelve (12) months from the date of submission, after which it is systematically deleted, unless a contractual engagement is initiated or retention is required by Indian statutory obligations.
+              </li>
+              <li>
+                <strong className="text-white">Diagnostic &amp; Rate-Limiting Logs:</strong> Rate-limiting records and transient technical logs are retained for no more than ninety (90) days.
+              </li>
+              <li>
+                <strong className="text-white">Immediate Deletion:</strong> Any visitor may request immediate deletion of their enquiry data at any time by contacting our Grievance Officer.
+              </li>
+            </ul>
+          </section>
+
+          <section className="space-y-3">
+            <h2 className="text-xl font-bold text-white tracking-tight">
+              5. Intellectual Property &amp; Commercial Confidentiality
+            </h2>
+            <p>
+              All proprietary project requirements, workflows, and operational metrics shared during discovery consultations are held in strict confidence. For contracted client engagements, custom software built specifically for the client belongs to the client, while foundational and reusable engineering components are perpetually licensed to enable flexible hosting anywhere.
             </p>
           </section>
 
           <section className="space-y-3">
             <h2 className="text-xl font-bold text-white tracking-tight">
-              5. Intellectual Property & Client Confidentiality
+              6. Rights of Data Principals (DPDP Act, 2023)
             </h2>
             <p>
-              All proprietary business logic, operational metrics, and proprietary trade secrets shared during discovery sessions are protected by strict confidentiality. Upon completion of commissioned work, full source code intellectual property is transferred directly to the client.
+              Under Indian data protection law, you hold specific rights regarding your personal digital data:
             </p>
+            <ul className="list-disc pl-6 space-y-2">
+              <li>Right to access an itemized summary of personal data held and processed.</li>
+              <li>Right to correction, completion, and updating of inaccurate data.</li>
+              <li>Right to erasure of personal data that is no longer required.</li>
+              <li>Right of grievance redressal with our designated Grievance Officer.</li>
+            </ul>
           </section>
 
           <section className="space-y-3">
             <h2 className="text-xl font-bold text-white tracking-tight">
-              6. Contact & Data Rights
+              7. Grievance Officer &amp; Inquiries
             </h2>
             <p>
-              If you have any questions regarding this Privacy Policy or wish to request data access, correction, or deletion, please contact us directly at:
+              In accordance with the Digital Personal Data Protection Act, 2023 and the Information Technology Act, 2000, please direct any data privacy questions, correction requests, or grievances to:
             </p>
-            <div className="p-5 rounded-xl bg-[#0D111A] border border-white/10 font-mono text-xs text-gray-300">
-              Intallo Engineering Compliance<br />
-              Email: contact@intallo.in<br />
-              Domain: https://intallo.in<br />
-              Bengaluru, India
+            <div className="p-6 rounded-xl bg-[#0D111A] border border-white/10 font-mono text-xs text-gray-300 space-y-1">
+              <div className="font-bold text-white text-sm mb-2">Grievance Redressal</div>
+              <div>Officer: Shashidhar Pawadashetti</div>
+              <div>Entity: Intallo Technologies</div>
+              <div>Email: contact@intallo.in</div>
+              <div>Location: Bengaluru, Karnataka, India</div>
+              <div className="text-gray-500 pt-2 border-t border-white/10 mt-2">
+                Acknowledgment: Within 48 hours · Resolution: Within 30 calendar days
+              </div>
             </div>
           </section>
         </div>

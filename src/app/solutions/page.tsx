@@ -7,11 +7,15 @@ export const metadata: Metadata = {
   title: "Industry Solutions — Intallo",
   description:
     "Tailored digital systems and automated operational pipelines for hotels, restaurants, bakeries, and growing businesses.",
+  alternates: {
+    canonical: "https://intallo.in/solutions",
+  },
   openGraph: {
     title: "Industry Solutions — Intallo",
     description:
       "Tailored digital systems and automated operational pipelines for hotels, restaurants, bakeries, and growing businesses.",
     url: "https://intallo.in/solutions",
+    locale: "en_IN",
   },
 };
 
@@ -103,7 +107,7 @@ export default function SolutionsPage() {
                       href={solution.demoLink}
                       className="inline-flex items-center gap-2 text-sm sm:text-base font-semibold text-white bg-gradient-to-r from-[#0C34C5] to-[#1A76FF] hover:from-[#002FA7] hover:to-[#0066FF] px-6 py-3.5 rounded-full shadow-lg shadow-blue-600/30 transition-all"
                     >
-                      <span>Explore Demo & Case Study</span>
+                      <span>View Architecture &amp; Case Study</span>
                       <ArrowUpRight className="w-4 h-4" />
                     </ActionLink>
                   </div>

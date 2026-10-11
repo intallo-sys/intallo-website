@@ -117,10 +117,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
               <a href="mailto:contact@intallo.in" className="hover:text-white transition-colors">
                 contact@intallo.in
               </a>
-              <div className="flex items-center gap-2 text-emerald-400">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_6px_#34d399]" />
-                <span>SYSTEMS ACTIVE</span>
-              </div>
+              <span className="text-gray-400">Bengaluru, India</span>
             </div>
           </motion.div>
         </motion.div>

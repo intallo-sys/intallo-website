@@ -5,14 +5,18 @@ import { workData } from "@/lib/content";
 import { ArrowUpRight, CheckCircle2 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Selected Work & Interactive Demos — Intallo",
+  title: "Selected Systems & Architecture Case Studies — Intallo",
   description:
-    "Explore Intallo's live demonstration systems: direct hotel booking engines, restaurant QR ordering & KDS, and bakery production automation.",
+    "Explore Intallo's concept architectures and system designs: direct hotel booking engines, restaurant QR ordering & KDS, and bakery production automation.",
+  alternates: {
+    canonical: "https://intallo.in/work",
+  },
   openGraph: {
-    title: "Selected Work & Interactive Demos — Intallo",
+    title: "Selected Systems & Architecture Case Studies — Intallo",
     description:
-      "Explore Intallo's live demonstration systems: direct hotel booking engines, restaurant QR ordering & KDS, and bakery production automation.",
+      "Explore Intallo's concept architectures and system designs: direct hotel booking engines, restaurant QR ordering & KDS, and bakery production automation.",
     url: "https://intallo.in/work",
+    locale: "en_IN",
   },
 };
 
@@ -63,9 +67,9 @@ export default function WorkPage() {
                     sizes="(max-width: 1024px) 100vw, 600px"
                     className="object-cover"
                   />
-                  <div className="absolute top-4 left-4 flex items-center gap-2 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/15 text-[11px] font-mono tracking-wider text-white">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                    <span>INTERACTIVE DEMO</span>
+                  <div className="absolute top-4 left-4 flex items-center gap-2 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/15 text-[11px] font-mono tracking-wider text-blue-300">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#1A76FF]" />
+                    <span>CONCEPT ARCHITECTURE</span>
                   </div>
                 </div>
 

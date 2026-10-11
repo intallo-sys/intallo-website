@@ -41,9 +41,12 @@ export const metadata: Metadata = {
     ],
     shortcut: "/favicon.ico",
   },
+  alternates: {
+    canonical: "https://intallo.in",
+  },
   openGraph: {
     type: "website",
-    locale: "en_US",
+    locale: "en_IN",
     url: "https://intallo.in",
     siteName: "Intallo",
     title: "Intallo — Turn Manual Work Into Digital Solutions",
@@ -51,10 +54,10 @@ export const metadata: Metadata = {
       "We engineer high-performance web platforms, custom operational software, and automated workflows that eliminate manual bottlenecks for growing businesses.",
     images: [
       {
-        url: "/logo.png",
-        width: 1024,
-        height: 558,
-        alt: "Intallo Logo",
+        url: "/images/og-share.png",
+        width: 1200,
+        height: 630,
+        alt: "Intallo — Turn Manual Work Into Digital Solutions",
       },
     ],
   },
@@ -63,7 +66,7 @@ export const metadata: Metadata = {
     title: "Intallo — Turn Manual Work Into Digital Solutions",
     description:
       "We engineer high-performance web platforms, custom operational software, and automated workflows that eliminate manual bottlenecks for growing businesses.",
-    images: ["/logo.png"],
+    images: ["/images/og-share.png"],
   },
   robots: {
     index: true,
@@ -81,11 +84,17 @@ export const metadata: Metadata = {
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "Intallo",
+  name: "Intallo Technologies",
   url: "https://intallo.in",
   logo: "https://intallo.in/logo.png",
   description:
     "Turn Manual Work Into Digital Solutions. Intallo engineers high-performance web platforms, custom operational software, and automated workflows for growing businesses.",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Bengaluru",
+    addressRegion: "Karnataka",
+    addressCountry: "IN",
+  },
   contactPoint: {
     "@type": "ContactPoint",
     email: "contact@intallo.in",
@@ -95,7 +104,7 @@ const jsonLd = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} ${fraunces.variable} dark`}>
+    <html lang="en-IN" className={`${inter.variable} ${fraunces.variable} dark`}>
       <head>
         <script
           type="application/ld+json"

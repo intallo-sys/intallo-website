@@ -88,22 +88,12 @@ export default function Hero() {
           transition={{ duration: 1, delay: 0.5 }}
           className="mt-16 md:mt-24 pt-8 border-t border-white/[0.08] max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 text-left"
         >
-          <div>
-            <div className="font-mono text-2xl md:text-3xl font-bold text-white">99.98%</div>
-            <div className="text-xs text-gray-500 mt-1 uppercase tracking-wider">Production SLA</div>
-          </div>
-          <div>
-            <div className="font-mono text-2xl md:text-3xl font-bold text-white">&lt;100ms</div>
-            <div className="text-xs text-gray-500 mt-1 uppercase tracking-wider">Edge API Latency</div>
-          </div>
-          <div>
-            <div className="font-mono text-2xl md:text-3xl font-bold text-white">100%</div>
-            <div className="text-xs text-gray-500 mt-1 uppercase tracking-wider">Client-Owned IP</div>
-          </div>
-          <div>
-            <div className="font-mono text-2xl md:text-3xl font-bold text-white">Zero-Lockin</div>
-            <div className="text-xs text-gray-500 mt-1 uppercase tracking-wider">Edge Stack</div>
-          </div>
+          {hero.systemStatus.map((item, index) => (
+            <div key={index}>
+              <div className="font-mono text-2xl md:text-3xl font-bold text-white">{item.value}</div>
+              <div className="text-xs text-gray-500 mt-1 uppercase tracking-wider">{item.label}</div>
+            </div>
+          ))}
         </motion.div>
       </div>
     </section>
