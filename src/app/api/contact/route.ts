@@ -52,48 +52,79 @@ export async function POST(request: Request | NextRequest) {
     }
     const data = parsed.data;
 
-    // 5. Rate limit
+    // 5. Rate limit (fail-open if rate limiter read encounters a transient error)
     const ipHash = hashIp(getClientIp(request));
-    if (await isRateLimited(ipHash)) {
-      log("warn", "contact.rate_limited");
-      return NextResponse.json(LIMITED, { status: 429 });
+    try {
+      if (await isRateLimited(ipHash)) {
+        log("warn", "contact.rate_limited");
+        return NextResponse.json(LIMITED, { status: 429 });
+      }
+    } catch {
+      log("warn", "contact.rate_limit_check_failed");
     }
 
     // 6. Persist first, so the lead is never lost
-    const submission = await prisma.contactSubmission.create({
-      data: { ...data, ipHash, status: "RECEIVED" },
-      select: { id: true },
-    });
-    log("info", "contact.submission_created");
+    let submissionId: string | null = null;
+    try {
+      const submission = await prisma.contactSubmission.create({
+        data: { ...data, ipHash, status: "RECEIVED" },
+        select: { id: true },
+      });
+      submissionId = submission.id;
+      log("info", "contact.submission_created");
+    } catch {
+      log("error", "contact.db_persist_failed");
+    }
 
     // 7. Notify by email; failure must not lose the lead
+    let emailSent = false;
+    let emailMessageId: string | null = null;
     try {
-      const messageId = await sendContactNotification(data);
-      await prisma.contactSubmission.update({
-        where: { id: submission.id },
-        data: { status: "EMAIL_SENT", emailMessageId: messageId },
-      });
+      emailMessageId = await sendContactNotification(data);
+      emailSent = true;
       log("info", "contact.email_sent");
     } catch {
       log("error", "contact.email_failed", {
-        submissionId: submission.id,
+        submissionId: submissionId ?? "unpersisted",
         recipient: "contact@intallo.in",
-        alert: "Lead saved to database but email delivery to contact@intallo.in failed.",
+        alert: "Lead saved or attempted, but email delivery to contact@intallo.in failed.",
       });
+      if (submissionId) {
+        try {
+          await prisma.contactSubmission.update({
+            where: { id: submissionId },
+            data: { status: "EMAIL_FAILED" },
+          });
+        } catch {
+          log("error", "contact.status_update_failed");
+        }
+      }
+    }
+
+    // Update status to EMAIL_SENT only if email actually succeeded (isolated from email try/catch)
+    if (submissionId && emailSent) {
       try {
         await prisma.contactSubmission.update({
-          where: { id: submission.id },
-          data: { status: "EMAIL_FAILED" },
+          where: { id: submissionId },
+          data: { status: "EMAIL_SENT", emailMessageId: emailMessageId ?? undefined },
         });
       } catch {
         log("error", "contact.status_update_failed");
       }
     }
 
-    // 8. Safe response
-    return NextResponse.json(SUCCESS, { status: 200 });
-  } catch {
-    log("error", "contact.server_error"); // never log the error body or payload
+    // 8. Safe response: as long as either DB persistence or email dispatch succeeded, acknowledge success
+    if (submissionId || emailSent) {
+      return NextResponse.json(SUCCESS, { status: 200 });
+    }
+
+    // Only fail if both DB persistence and email notification failed
+    return NextResponse.json(FAILURE, { status: 500 });
+  } catch (err) {
+    // Sanitize error logging: never leak connection strings or user PII
+    log("error", "contact.server_error", {
+      errorType: err instanceof Error ? err.constructor.name : typeof err,
+    });
     return NextResponse.json(FAILURE, { status: 500 });
   }
 }

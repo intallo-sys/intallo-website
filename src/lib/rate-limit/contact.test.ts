@@ -56,17 +56,20 @@ describe("rate-limit/contact", () => {
       expect(hash1).toHaveLength(64);
     });
 
-    it("throws an error in production if IP_HASH_SECRET is missing", () => {
+    it("safely falls back without throwing in production if IP_HASH_SECRET is missing", () => {
       delete process.env.IP_HASH_SECRET;
+      delete process.env.DATABASE_URL;
+      delete process.env.RESEND_API_KEY;
       (process.env as Record<string, string | undefined>).NODE_ENV = "production";
 
-      expect(() => hashIp("192.168.1.1")).toThrow(
-        "Missing required environment variable: IP_HASH_SECRET"
-      );
+      const hash = hashIp("192.168.1.1");
+      expect(hash).toHaveLength(64);
     });
 
-    it("uses dev fallback secret in non-production environments when secret is missing", () => {
+    it("uses ephemeral fallback secret in non-production environments when secret is missing", () => {
       delete process.env.IP_HASH_SECRET;
+      delete process.env.DATABASE_URL;
+      delete process.env.RESEND_API_KEY;
       (process.env as Record<string, string | undefined>).NODE_ENV = "test";
 
       const hash = hashIp("192.168.1.1");
@@ -77,14 +80,29 @@ describe("rate-limit/contact", () => {
   describe("isRateLimited", () => {
     it("returns false when submissions count is below limit (5)", async () => {
       vi.mocked(prisma.contactSubmission.count).mockResolvedValueOnce(3);
-      const limited = await isRateLimited("test-hash");
+      const limited = await isRateLimited("test-hash-1");
       expect(limited).toBe(false);
     });
 
     it("returns true when submissions count meets or exceeds limit (5)", async () => {
       vi.mocked(prisma.contactSubmission.count).mockResolvedValueOnce(5);
-      const limited = await isRateLimited("test-hash");
+      const limited = await isRateLimited("test-hash-2");
       expect(limited).toBe(true);
+    });
+
+    it("falls back to in-memory rate limiter when database count throws an error", async () => {
+      vi.mocked(prisma.contactSubmission.count).mockRejectedValue(new Error("DB offline"));
+      const testIp = "test-db-offline-ip";
+
+      // First 5 requests pass in memory
+      for (let i = 0; i < 5; i++) {
+        const limited = await isRateLimited(testIp);
+        expect(limited).toBe(false);
+      }
+
+      // 6th request is throttled by in-memory rate limiter
+      const limited6th = await isRateLimited(testIp);
+      expect(limited6th).toBe(true);
     });
   });
 });

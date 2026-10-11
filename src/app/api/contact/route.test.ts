@@ -91,4 +91,56 @@ describe("POST /api/contact", () => {
       data: { status: "EMAIL_FAILED" },
     });
   });
+
+  it("sends email and returns 200 even if database persistence fails", async () => {
+    vi.mocked(prisma.contactSubmission.create).mockRejectedValueOnce(new Error("DB connection pool full"));
+    vi.mocked(sendContactNotification).mockResolvedValueOnce("msg_success_email");
+
+    const payload = {
+      name: "DB Fallback User",
+      email: "dbfallback@example.com",
+      company: "DB Fallback Inc",
+      message: "Testing DB failure when email still delivers successfully.",
+      website: "",
+    };
+    const res = await POST(makeReq(payload));
+    const data = await res.json();
+    expect(res.status).toBe(200);
+    expect(data.success).toBe(true);
+    expect(sendContactNotification).toHaveBeenCalled();
+  });
+
+  it("returns 500 only when both database persistence and email notification fail", async () => {
+    vi.mocked(prisma.contactSubmission.create).mockRejectedValueOnce(new Error("DB offline"));
+    vi.mocked(sendContactNotification).mockRejectedValueOnce(new Error("Email provider offline"));
+
+    const payload = {
+      name: "Dual Failure User",
+      email: "dualfailure@example.com",
+      company: "Dual Failure Inc",
+      message: "Testing catastrophic failure when both DB and email fail.",
+      website: "",
+    };
+    const res = await POST(makeReq(payload));
+    const data = await res.json();
+    expect(res.status).toBe(500);
+    expect(data.success).toBe(false);
+  });
+
+  it("returns 429 when client is rate limited", async () => {
+    vi.mocked(prisma.contactSubmission.count).mockResolvedValueOnce(5);
+
+    const payload = {
+      name: "Rate Limited User",
+      email: "ratelimited@example.com",
+      company: "Rate Limit Inc",
+      message: "Testing 429 rate limiting response from contact API.",
+      website: "",
+    };
+    const res = await POST(makeReq(payload));
+    const data = await res.json();
+    expect(res.status).toBe(429);
+    expect(data.success).toBe(false);
+    expect(data.error).toBe("Too many messages. Please try again later.");
+  });
 });
