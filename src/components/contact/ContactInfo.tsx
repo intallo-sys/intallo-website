@@ -57,12 +57,54 @@ export default function ContactInfo() {
               </div>
             );
           })}
+
+          {/* Direct Mobile Lines */}
+          <div className="p-4 rounded-2xl bg-white/[0.02] border border-white/[0.06] space-y-3">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-[#1A76FF] shrink-0">
+                <Phone className="w-4 h-4" />
+              </div>
+              <div>
+                <span className="text-[11px] font-mono text-gray-400 uppercase tracking-wider block">
+                  Direct Mobile Lines
+                </span>
+                <span className="text-xs text-gray-400">Call or message our team directly</span>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1">
+              {info.phones.map((phone, i) => (
+                <div
+                  key={i}
+                  className="flex items-center justify-between p-2.5 rounded-xl bg-white/[0.02] border border-white/[0.05] hover:border-white/15 transition-colors"
+                >
+                  <ActionLink
+                    href={`tel:${phone.tel}`}
+                    className="text-xs sm:text-sm font-mono text-gray-200 hover:text-white transition-colors"
+                  >
+                    {phone.number}
+                  </ActionLink>
+                  <ActionLink
+                    href={phone.wa}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs font-mono font-medium text-emerald-400 hover:text-white bg-emerald-500/15 hover:bg-emerald-500/30 px-2.5 py-1 rounded-md border border-emerald-500/25 transition-all"
+                    aria-label={`Chat on WhatsApp with ${phone.number}`}
+                  >
+                    WA
+                  </ActionLink>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
 
         {/* Instant Connect & Discovery Call Actions */}
         <div className="pt-2 space-y-3">
           <ActionLink
             href={info.whatsapp.href}
+            target="_blank"
+            rel="noopener noreferrer"
             className="w-full inline-flex items-center justify-center gap-2.5 bg-emerald-500/15 hover:bg-emerald-500/25 border border-emerald-500/30 text-emerald-300 hover:text-white font-medium text-sm px-5 py-3 rounded-xl transition-all"
           >
             <Phone className="w-4 h-4 text-emerald-400" />

@@ -46,7 +46,10 @@ export const footer = {
       title: "Direct Connect",
       links: [
         { label: "contact@intallo.in", href: "mailto:contact@intallo.in" },
-        { label: "WhatsApp: +91 99801 46399", href: "https://wa.me/919980146399" },
+        { label: "+91 63636 20308", href: "tel:+916363620308" },
+        { label: "+91 76249 55229", href: "tel:+917624955229" },
+        { label: "+91 94831 65634", href: "tel:+919483165634" },
+        { label: "+91 84314 98500", href: "tel:+918431498500" },
         { label: "Schedule Discovery Call", href: "/contact" },
       ],
     },
@@ -812,6 +815,12 @@ export const contactData = {
     canonicalUrl: "https://intallo.in",
     location: "Bengaluru, India",
     responsePromise: "We review and respond to every enquiry within 24 business hours.",
+    phones: [
+      { number: "+91 63636 20308", tel: "+916363620308", wa: "https://wa.me/916363620308" },
+      { number: "+91 76249 55229", tel: "+917624955229", wa: "https://wa.me/917624955229" },
+      { number: "+91 94831 65634", tel: "+919483165634", wa: "https://wa.me/919483165634" },
+      { number: "+91 84314 98500", tel: "+918431498500", wa: "https://wa.me/918431498500" },
+    ],
   },
 };
 
@@ -825,11 +834,11 @@ export const contact = {
     items: [
       { label: "Email", value: "contact@intallo.in", href: "mailto:contact@intallo.in" },
       { label: "Location", value: "Bengaluru, India", href: null },
-      { label: "WhatsApp", value: "+91 99801 46399", href: "https://wa.me/919980146399" },
     ],
+    phones: contactData.info.phones,
     whatsapp: {
-      label: "Chat on WhatsApp (+91 99801 46399)",
-      href: "https://wa.me/919980146399?text=Hi%20Intallo%2C%20I%20would%20like%20to%20discuss%20a%20project.",
+      label: "Chat on WhatsApp (+91 63636 20308)",
+      href: "https://wa.me/916363620308?text=Hi%20Intallo%2C%20I%20would%20like%20to%20discuss%20a%20project.",
     },
     discoveryCall: {
       label: "Book Discovery Call (Use Form)",
