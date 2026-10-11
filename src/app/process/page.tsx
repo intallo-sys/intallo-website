@@ -6,12 +6,16 @@ import { ArrowUpRight, CheckCircle2 } from "lucide-react";
 export const metadata: Metadata = {
   title: "Delivery Process & Engineering Framework — Intallo",
   description:
-    "Explore Intallo's 5-stage software delivery methodology: from operational discovery to zero-downtime deployment and 100% IP handover.",
+    "Explore Intallo's 5-stage software delivery methodology: from operational discovery to zero-downtime deployment and custom code handover with perpetual component licensing.",
+  alternates: {
+    canonical: "https://intallo.in/process",
+  },
   openGraph: {
     title: "Delivery Process & Engineering Framework — Intallo",
     description:
-      "Explore Intallo's 5-stage software delivery methodology: from operational discovery to zero-downtime deployment and 100% IP handover.",
+      "Explore Intallo's 5-stage software delivery methodology: from operational discovery to zero-downtime deployment and custom code handover with perpetual component licensing.",
     url: "https://intallo.in/process",
+    locale: "en_IN",
   },
 };
 

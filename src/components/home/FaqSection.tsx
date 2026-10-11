@@ -54,11 +54,18 @@ export default function FaqSection() {
                   </div>
                 </button>
 
-                {isOpen && (
-                  <div className="px-6 sm:px-8 pb-6 pt-0 text-sm sm:text-base text-gray-400 leading-relaxed border-t border-white/[0.06] mt-1 pt-4">
-                    {item.answer}
+                <div
+                  className={`grid transition-[grid-template-rows,opacity] duration-300 ease-in-out ${
+                    isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+                  }`}
+                  aria-hidden={!isOpen}
+                >
+                  <div className="overflow-hidden">
+                    <div className="px-6 sm:px-8 pb-6 pt-4 text-sm sm:text-base text-gray-400 leading-relaxed border-t border-white/[0.06]">
+                      {item.answer}
+                    </div>
                   </div>
-                )}
+                </div>
               </div>
             );
           })}

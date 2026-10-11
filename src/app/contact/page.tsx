@@ -7,11 +7,16 @@ import { contact } from "@/lib/content";
 export const metadata: Metadata = {
   title: "Contact Intallo — Let's Build Your Next Digital System",
   description: contact.hero.body,
+  alternates: {
+    canonical: "https://intallo.in/contact",
+  },
   openGraph: {
     title: "Contact Intallo — Let's Build Your Next Digital System",
     description: contact.hero.body,
     type: "website",
     siteName: "Intallo",
+    url: "https://intallo.in/contact",
+    locale: "en_IN",
   },
   twitter: {
     card: "summary_large_image",
@@ -57,7 +62,7 @@ export default function ContactPage() {
             <div className="lg:col-span-5 h-full">
               <ContactInfo />
             </div>
-            <div className="lg:col-span-7 h-full">
+            <div className="lg:col-span-7 h-full scroll-mt-32" id="contact-form">
               <ContactForm />
             </div>
           </div>

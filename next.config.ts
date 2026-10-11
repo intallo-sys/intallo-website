@@ -1,6 +1,20 @@
 import type { NextConfig } from "next";
 
+const cspHeader = `
+  default-src 'self';
+  script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.clarity.ms https://*.clarity.ms https://va.vercel-scripts.com;
+  style-src 'self' 'unsafe-inline';
+  img-src 'self' data: blob: https://www.clarity.ms https://*.clarity.ms https://c.bing.com;
+  font-src 'self' data: https://fonts.gstatic.com;
+  connect-src 'self' https://*.clarity.ms https://www.clarity.ms https://vitals.vercel-insights.com https://va.vercel-scripts.com https://c.bing.com;
+  worker-src 'self' blob:;
+  frame-ancestors 'none';
+  base-uri 'self';
+  form-action 'self';
+`.replace(/\s{2,}/g, " ").trim();
+
 const securityHeaders = [
+  { key: "Content-Security-Policy", value: cspHeader },
   { key: "X-Content-Type-Options", value: "nosniff" },
   { key: "X-Frame-Options", value: "DENY" },
   { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },

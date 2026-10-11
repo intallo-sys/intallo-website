@@ -46,7 +46,8 @@ export const footer = {
       title: "Direct Connect",
       links: [
         { label: "contact@intallo.in", href: "mailto:contact@intallo.in" },
-        { label: "Canonical: intallo.in", href: "https://intallo.in" },
+        { label: "WhatsApp: +91 99801 46399", href: "https://wa.me/919980146399" },
+        { label: "Schedule Discovery Call", href: "/contact" },
       ],
     },
   ],
@@ -55,25 +56,26 @@ export const footer = {
 export const home = {
   hero: {
     eyebrow: "INTALLO // SYSTEMS & AUTOMATION",
-    badge: "SYSTEMS ACTIVE",
+    badge: "OPERATIONAL SYSTEMS & AUTOMATION",
     headlinePart1: "Turn Manual Work",
     headlinePart2: "Into",
     headlinePart3: "Digital Solutions.",
     body:
       "We engineer high-performance web platforms, custom operational software, and automated workflows that eliminate manual bottlenecks for growing businesses.",
     primaryCta: { label: "Start a Project", href: "/contact" },
-    secondaryCta: { label: "Explore Demos & Work", href: "/#showreel" },
-    systemStatus: {
-      uptime: "99.98%",
-      deploySpeed: "< 100ms",
-      architecture: "Edge / Serverless",
-    },
+    secondaryCta: { label: "View Selected Work", href: "/#showreel" },
+    systemStatus: [
+      { value: "2+", label: "Working Demos" },
+      { value: "You Own", label: "What We Build" },
+      { value: "Next.js & Edge", label: "Modern Architecture" },
+      { value: "Host Anywhere", label: "Zero Vendor Lock-in" },
+    ],
   },
 
   projectShowreel: {
-    eyebrow: "INTERACTIVE SHOWREEL",
+    eyebrow: "CONCEPT ARCHITECTURES & SYSTEMS",
     heading: "Selected systems in action.",
-    subheading: "Swipe or drag to explore live prototypes and operational platforms.",
+    subheading: "Explore concept architectures and operational system designs.",
     items: [
       {
         id: "stayora",
@@ -97,7 +99,7 @@ export const home = {
         tags: ["QR Ordering", "Kitchen Display System", "Order Management"],
         metrics: "Sub-Second Ticket Dispatch · Live Table Status · Zero Staff Bottlenecks",
         href: "/work#dinepulse",
-        image: "/images/hero/home-hero.jpg",
+        image: "/images/work/dinepulse.jpg",
         imageAlt: "DinePulse restaurant ordering system terminal",
         accentColor: "#0C34C5",
       },
@@ -123,8 +125,8 @@ export const home = {
     body:
       "Most growing businesses waste hours every day juggling spreadsheets, phone messages, paper orders, and disconnected tools. Intallo replaces friction with reliable digital platforms built specifically around how your business operates.",
     stats: [
-      { value: "100%", label: "Client-Owned Code" },
-      { value: "0", label: "Third-Party Lock-in" },
+      { value: "You Own", label: "What We Build Specifically" },
+      { value: "Perpetual", label: "Background IP License" },
       { value: "Edge", label: "Serverless Performance" },
     ],
   },
@@ -132,7 +134,7 @@ export const home = {
   featuredWork: {
     eyebrow: "FEATURED WORK",
     heading: "Digital work designed to make an impact.",
-    subheading: "Real internal demonstration systems engineering real business outcomes.",
+    subheading: "Concept architectures and operational systems engineered for real business outcomes.",
     items: [
       {
         id: "stayora",
@@ -147,7 +149,7 @@ export const home = {
           "Automated confirmation email and WhatsApp alert triggers",
           "Clean administration view for front-desk reservation management",
         ],
-        cta: { label: "Explore Stayora Demo →", href: "/work#stayora" },
+        cta: { label: "View Architecture & Specs →", href: "/work#stayora" },
         image: "/images/work/stayora.jpg",
         imageAlt: "Stayora direct booking engine preview",
       },
@@ -164,8 +166,8 @@ export const home = {
           "Live kitchen ticket routing with automated item statuses",
           "Staff table oversight and daily revenue reconciliation",
         ],
-        cta: { label: "Explore DinePulse Demo →", href: "/work#dinepulse" },
-        image: "/images/hero/home-hero.jpg",
+        cta: { label: "View Architecture & Specs →", href: "/work#dinepulse" },
+        image: "/images/work/dinepulse.jpg",
         imageAlt: "DinePulse restaurant ordering system preview",
       },
       {
@@ -181,7 +183,7 @@ export const home = {
           "One-click PDF dispatch for delivery route drivers",
           "Synchronized inventory updates and order audit trail",
         ],
-        cta: { label: "Explore SmartFlow Demo →", href: "/work#smartflow" },
+        cta: { label: "View Architecture & Specs →", href: "/work#smartflow" },
         image: "/images/work/smartflow.jpg",
         imageAlt: "SmartFlow operations workflow preview",
       },
@@ -226,7 +228,7 @@ export const home = {
         title: "Cloud Infrastructure & Maintenance",
         description:
           "Serverless cloud deployments, SSL hardening, database backups, uptime monitoring, and continuous technical support.",
-        deliverables: ["Vercel/Edge Deploy", "PostgreSQL Backups", "Continuous SLA"],
+        deliverables: ["Vercel/Edge Deploy", "PostgreSQL Backups", "Dedicated Support"],
       },
     ],
   },
@@ -264,7 +266,7 @@ export const home = {
           "Bespoke editorial UI/UX design",
           "Next.js App Router performance build",
           "Technical SEO, metadata & sitemap setup",
-          "Secure Turnstile anti-spam lead capture",
+          "Validated anti-spam lead capture",
           "Mobile-first responsive optimization",
           "Deployment to global CDN infrastructure",
         ],
@@ -299,8 +301,8 @@ export const home = {
           "Multi-role client & administrative portals",
           "Third-party software & webhook integrations",
           "Custom automated data pipelines & reporting",
-          "Comprehensive security audit & penetration testing",
-          "Dedicated post-launch SLA maintenance",
+          "Security review (no guarantee) & code audit",
+          "Dedicated post-launch maintenance & updates",
         ],
         idealFor: "Multi-location businesses, logistics, specialized operations",
       },
@@ -340,7 +342,7 @@ export const home = {
         number: "05",
         title: "Deployment & Full Handover",
         description:
-          "We execute zero-downtime deployment, deliver team training, and transfer 100% intellectual property and source code ownership.",
+          "We execute zero-downtime deployment, deliver team training, and handover full ownership of custom code with a perpetual license to foundational components.",
       },
     ],
   },
@@ -368,7 +370,7 @@ export const home = {
       {
         question: "Do we own the source code and digital assets upon completion?",
         answer:
-          "Yes, completely. You retain 100% intellectual property ownership of the codebase, design assets, and database architecture. We do not lock you into proprietary hosting or closed-source platforms.",
+          "You own everything built specifically for you. Our reusable components are licensed to you perpetually. Host anywhere with zero vendor lock-in.",
       },
       {
         question: "Do you offer post-launch support and maintenance?",
@@ -393,7 +395,7 @@ export const about = {
     eyebrow: "ABOUT INTALLO",
     headingLines: ["Engineered for businesses", "that demand efficiency", "and reliability."],
     body:
-      "Intallo is an engineering-driven digital studio. We build custom software, web applications, and automated systems for businesses ready to replace manual operations with connected digital infrastructure.",
+      "Intallo is an engineering-driven digital studio based in Bengaluru, India. We build custom software, web applications, and automated systems for businesses ready to replace manual operations with connected digital infrastructure.",
     image: "/images/about/building.jpg",
     imageAlt: "Modern architectural glass office",
   },
@@ -425,9 +427,9 @@ export const about = {
         lines: ["Oversized typography,", "high contrast, and", "flawless responsiveness."],
       },
       {
-        title: "Full Code Ownership",
+        title: "Code Ownership",
         icon: "Shield",
-        lines: ["100% client-owned code", "with zero proprietary", "vendor lock-in."],
+        lines: ["You own what we build for you.", "Reusable components licensed", "perpetually. Host anywhere."],
       },
     ],
   },
@@ -437,20 +439,20 @@ export const about = {
     items: [
       { number: "01", title: "Practical Solutions", lines: ["Targeting operational bottlenecks", "with modern code."] },
       { number: "02", title: "Modern Technology", lines: ["Built on Next.js, TypeScript", "and global edge networks."] },
-      { number: "03", title: "Zero Vendor Lock-in", lines: ["100% intellectual property", "belongs to your business."] },
+      { number: "03", title: "Clear IP Ownership", lines: ["You own what we build for you.", "Foundational components licensed", "perpetually. Host anywhere."] },
       { number: "04", title: "Dedicated Support", lines: ["We grow with our clients", "through continuous updates."] },
     ],
   },
   team: {
     eyebrow: "OUR TEAM",
     heading: "The engineers & leaders behind Intallo",
-    intro: "A dedicated team of systems architects, technical leads, and operational specialists building high-impact digital solutions.",
+    intro: "Based in Bengaluru, India — a focused engineering team combining systems architecture, full-stack development, and commercial discipline.",
     members: [
       {
         name: "Shashidhar Pawadashetti",
         role: "Founder & CEO, Project Manager",
         description:
-          "Directs company vision, digital strategy, client collaboration, and end-to-end project execution for enterprise and bespoke operational solutions.",
+          "Directs company vision, digital strategy, client collaboration, and end-to-end project execution from Bengaluru, India.",
         descriptionLines: [
           "Directs company vision,",
           "digital strategy, and",
@@ -461,24 +463,10 @@ export const about = {
         links: { linkedin: null, github: null, email: "mailto:contact@intallo.in" },
       },
       {
-        name: "Ujwal Bilagi",
-        role: "Technical Lead",
-        description:
-          "Leads engineering implementation, full-stack application development, software design patterns, and code quality standards.",
-        descriptionLines: [
-          "Leads engineering implementation,",
-          "full-stack application development,",
-          "and code quality standards.",
-        ],
-        photo: "/images/team/ujwal.jpeg",
-        photoAlt: "Ujwal Bilagi, Technical Lead at Intallo",
-        links: { linkedin: null, github: null, email: "mailto:contact@intallo.in" },
-      },
-      {
         name: "Sujal Vaidya",
         role: "CTO",
         description:
-          "Architects core technical strategy, backend infrastructure, cloud systems, and high-performance automation engines across client platforms.",
+          "Architects technical strategy, backend infrastructure, cloud systems, and high-performance automation engines across client platforms.",
         descriptionLines: [
           "Architects technical strategy,",
           "cloud infrastructure, and",
@@ -489,8 +477,22 @@ export const about = {
         links: { linkedin: null, github: null, email: "mailto:contact@intallo.in" },
       },
       {
+        name: "Ujwal Bilagi",
+        role: "Assistant Technical Lead",
+        description:
+          "Drives engineering implementation, full-stack application development, software design patterns, and code quality standards.",
+        descriptionLines: [
+          "Drives engineering implementation,",
+          "full-stack application development,",
+          "and code quality standards.",
+        ],
+        photo: "/images/team/ujwal.jpeg",
+        photoAlt: "Ujwal Bilagi, Assistant Technical Lead at Intallo",
+        links: { linkedin: null, github: null, email: "mailto:contact@intallo.in" },
+      },
+      {
         name: "Jeevan Bennur",
-        role: "Finance Lead",
+        role: "CFO",
         description:
           "Manages financial modeling, fiscal planning, commercial contracts, operational budgets, and resource allocation.",
         descriptionLines: [
@@ -499,7 +501,7 @@ export const about = {
           "operational fiscal planning.",
         ],
         photo: "/images/team/jeevan.jpeg",
-        photoAlt: "Jeevan Bennur, Finance Lead at Intallo",
+        photoAlt: "Jeevan Bennur, CFO at Intallo",
         links: { linkedin: null, github: null, email: "mailto:contact@intallo.in" },
       },
     ],
@@ -717,7 +719,7 @@ export const workData = {
         "A contactless QR ordering platform and kitchen display system that streamlines table ordering, kitchen ticket dispatch, and guest payment processing in dining establishments.",
       tags: ["QR Ordering", "Kitchen Display", "Real-Time Sync", "WebSocket"],
       metrics: "Sub-Second Ticket Dispatch · Live Table Status · Zero Staff Bottlenecks",
-      image: "/images/hero/home-hero.jpg",
+      image: "/images/work/dinepulse.jpg",
       imageAlt: "DinePulse restaurant ordering system preview",
       architecture: [
         "No-app mobile web app optimized for iOS and Android camera scanners",
@@ -785,15 +787,15 @@ export const processData = {
       timeline: "Days 29–35",
       description:
         "We rigorously test mobile responsiveness, security headers, edge-case validation, payment webhooks, and performance under simulated traffic.",
-      deliverables: ["Security verification report", "Lighthouse 95+ performance", "Cross-device validation"],
+      deliverables: ["Security review report", "Performance audit", "Cross-device validation"],
     },
     {
       phase: "Phase 05",
-      title: "Deployment & Full IP Handover",
+      title: "Deployment & Custom IP Handover",
       timeline: "Launch & Beyond",
       description:
-        "We configure DNS, provision SSL certificates, migrate production data, and deploy to global edge infrastructure. We conduct staff training and transfer 100% intellectual property.",
-      deliverables: ["Production edge deployment", "Staff training walk-through", "100% source code repository transfer"],
+        "We configure DNS, provision SSL certificates, migrate production data, and deploy to global edge infrastructure. We conduct staff training and transfer full custom code ownership with a perpetual license to reusable components.",
+      deliverables: ["Production edge deployment", "Staff training walk-through", "Custom code repository transfer"],
     },
   ],
 };
@@ -823,8 +825,16 @@ export const contact = {
     items: [
       { label: "Email", value: "contact@intallo.in", href: "mailto:contact@intallo.in" },
       { label: "Location", value: "Bengaluru, India", href: null },
-      { label: "Canonical", value: "https://intallo.in", href: "https://intallo.in" },
+      { label: "WhatsApp", value: "+91 99801 46399", href: "https://wa.me/919980146399" },
     ],
+    whatsapp: {
+      label: "Chat on WhatsApp (+91 99801 46399)",
+      href: "https://wa.me/919980146399?text=Hi%20Intallo%2C%20I%20would%20like%20to%20discuss%20a%20project.",
+    },
+    discoveryCall: {
+      label: "Book Discovery Call (Use Form)",
+      href: "#contact-form",
+    },
     follow: {
       label: "Follow us",
       links: [

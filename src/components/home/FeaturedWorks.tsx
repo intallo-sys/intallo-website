@@ -46,8 +46,8 @@ export default function FeaturedWorks() {
                       <span className="text-xs font-mono tracking-wider text-[#1A76FF] uppercase">
                         {item.category}
                       </span>
-                      <span className="px-2 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-[10px] font-mono text-emerald-400">
-                        INTERACTIVE DEMO
+                      <span className="px-2 py-0.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-[10px] font-mono text-blue-400">
+                        CONCEPT PREVIEW
                       </span>
                     </div>
 

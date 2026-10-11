@@ -25,7 +25,10 @@ export default function Footer() {
               </ActionLink>
               <p className="text-sm text-gray-400">{footer.tagline}</p>
             </div>
-            <p className="text-xs text-gray-500 pt-4 md:pt-8">{footer.copyright}</p>
+            <div className="space-y-1 pt-4 md:pt-8 text-xs text-gray-500">
+              <p>{footer.copyright}</p>
+              <p className="text-[11px] text-gray-400">Intallo Technologies · Registered in Bengaluru, Karnataka, India</p>
+            </div>
           </div>
 
           {/* Right Columns (Starts approx 57% from left) */}

@@ -46,9 +46,9 @@ export default function BentoGrid() {
                   <span className="text-xs font-mono tracking-wider text-blue-400 uppercase">
                     CAPABILITY 01 / SCALABILITY
                   </span>
-                  <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-[11px] font-mono text-emerald-400">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                    <span>HIGH AVAILABILITY</span>
+                  <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-[11px] font-mono text-blue-400">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#1A76FF]" />
+                    <span>MODERN STACK</span>
                   </div>
                 </div>
 
@@ -60,24 +60,24 @@ export default function BentoGrid() {
                 </p>
               </div>
 
-              {/* Visual Mock Platform Telemetry */}
+              {/* Visual Architecture Telemetry */}
               <div className="mt-10 p-5 rounded-2xl bg-black/40 border border-white/[0.06] backdrop-blur-md">
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pb-4 border-b border-white/[0.06]">
                   <div>
-                    <span className="text-[11px] font-mono text-gray-500 uppercase block">Cluster SLA</span>
-                    <span className="text-lg font-mono font-bold text-emerald-400">99.98%</span>
+                    <span className="text-[11px] font-mono text-gray-500 uppercase block">Architecture</span>
+                    <span className="text-lg font-mono font-bold text-emerald-400">Edge Native</span>
                   </div>
                   <div>
-                    <span className="text-[11px] font-mono text-gray-500 uppercase block">Edge Latency</span>
-                    <span className="text-lg font-mono font-bold text-cyan-300">22ms</span>
+                    <span className="text-[11px] font-mono text-gray-500 uppercase block">Deployment</span>
+                    <span className="text-lg font-mono font-bold text-cyan-300">Global CDN</span>
                   </div>
                   <div>
                     <span className="text-[11px] font-mono text-gray-500 uppercase block">Type Coverage</span>
-                    <span className="text-lg font-mono font-bold text-blue-400">100% TS</span>
+                    <span className="text-lg font-mono font-bold text-blue-400">Strict TS</span>
                   </div>
                   <div>
                     <span className="text-[11px] font-mono text-gray-500 uppercase block">Security Tier</span>
-                    <span className="text-lg font-mono font-bold text-purple-300">Zero-Trust</span>
+                    <span className="text-lg font-mono font-bold text-purple-300">Hardened</span>
                   </div>
                 </div>
 

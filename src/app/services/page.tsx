@@ -34,8 +34,8 @@ const serviceDetails = [
       "We design and build bespoke web platforms engineered for maximum uptime, snappy reactivity, and intuitive user experiences. Every application is built with modern full-stack frameworks and zero-bloat standards.",
     metrics: [
       { label: "Architecture", value: "Next.js 16 + React 19" },
-      { label: "Target Uptime", value: "99.98% SLA" },
-      { label: "Performance", value: "<100ms Edge TTFB" },
+      { label: "Deployment", value: "Global Edge Network" },
+      { label: "Rendering", value: "Optimized SSR & Cache" },
       { label: "Coverage", value: "Strict TypeScript" },
     ],
     tags: ["Next.js", "TypeScript", "Node.js", "PostgreSQL", "Tailwind CSS", "Redis"],
@@ -85,8 +85,8 @@ const technicalStandards = [
     badge: "Throughput",
   },
   {
-    title: "Zero Vendor Lock-in",
-    description: "Clean codebases built on portable industry standards, open protocols, and modular primitives.",
+    title: "Truthful Code Ownership",
+    description: "You own everything built specifically for you. Our reusable components are licensed to you perpetually. Host anywhere.",
     badge: "Longevity",
   },
   {

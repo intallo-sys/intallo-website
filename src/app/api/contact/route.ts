@@ -60,7 +60,7 @@ export async function POST(request: Request | NextRequest) {
     }
 
     // 6. Persist first, so the lead is never lost
-    const submission = await (prisma as any).contactSubmission.create({
+    const submission = await prisma.contactSubmission.create({
       data: { ...data, ipHash, status: "RECEIVED" },
       select: { id: true },
     });
@@ -69,15 +69,19 @@ export async function POST(request: Request | NextRequest) {
     // 7. Notify by email; failure must not lose the lead
     try {
       const messageId = await sendContactNotification(data);
-      await (prisma as any).contactSubmission.update({
+      await prisma.contactSubmission.update({
         where: { id: submission.id },
         data: { status: "EMAIL_SENT", emailMessageId: messageId },
       });
       log("info", "contact.email_sent");
     } catch {
-      log("error", "contact.email_failed");
+      log("error", "contact.email_failed", {
+        submissionId: submission.id,
+        recipient: "contact@intallo.in",
+        alert: "Lead saved to database but email delivery to contact@intallo.in failed.",
+      });
       try {
-        await (prisma as any).contactSubmission.update({
+        await prisma.contactSubmission.update({
           where: { id: submission.id },
           data: { status: "EMAIL_FAILED" },
         });

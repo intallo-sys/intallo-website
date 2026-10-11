@@ -15,20 +15,20 @@ export default function ContactInfo() {
         <div>
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-[11px] font-mono tracking-wider text-emerald-400 mb-4">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_8px_#34d399]" />
-            <span>SYSTEMS ACTIVE · ACCEPTING PROJECTS</span>
+            <span>ACCEPTING NEW PROJECTS</span>
           </div>
 
           <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
             {info.subheading}
           </h3>
           <p className="mt-2 text-sm text-gray-400 leading-relaxed">
-            Reach out directly to discuss architecture, timeline, and deliverables with our engineering team.
+            Reach out directly to discuss architecture, timeline, and deliverables with our engineering team in Bengaluru.
           </p>
         </div>
 
-        <div className="space-y-5 pt-2">
+        <div className="space-y-4 pt-2">
           {info.items.map((item, i) => {
-            const Icon = i === 0 ? Mail : i === 1 ? Phone : MapPin;
+            const Icon = item.label === "Email" ? Mail : item.label === "Location" ? MapPin : Phone;
             return (
               <div
                 key={i}
@@ -58,10 +58,28 @@ export default function ContactInfo() {
             );
           })}
         </div>
+
+        {/* Instant Connect & Discovery Call Actions */}
+        <div className="pt-2 space-y-3">
+          <ActionLink
+            href={info.whatsapp.href}
+            className="w-full inline-flex items-center justify-center gap-2.5 bg-emerald-500/15 hover:bg-emerald-500/25 border border-emerald-500/30 text-emerald-300 hover:text-white font-medium text-sm px-5 py-3 rounded-xl transition-all"
+          >
+            <Phone className="w-4 h-4 text-emerald-400" />
+            <span>{info.whatsapp.label}</span>
+          </ActionLink>
+
+          <ActionLink
+            href={info.discoveryCall.href}
+            className="w-full inline-flex items-center justify-center gap-2 bg-white/[0.05] hover:bg-white/[0.1] border border-white/10 text-gray-200 hover:text-white font-medium text-sm px-5 py-3 rounded-xl transition-all"
+          >
+            <span>{info.discoveryCall.label}</span>
+          </ActionLink>
+        </div>
       </div>
 
       {/* Commitments & Socials */}
-      <div className="mt-8 pt-6 border-t border-white/[0.08] relative z-10 space-y-4">
+      <div className="mt-8 pt-6 border-t border-white/[0.08] relative z-10 space-y-3">
         <div className="flex items-center gap-2 text-xs font-mono text-gray-400">
           <span className="text-blue-400">Response Window:</span>
           <span>&lt; 24 business hours</span>
@@ -69,6 +87,10 @@ export default function ContactInfo() {
         <div className="flex items-center gap-2 text-xs font-mono text-gray-400">
           <span className="text-emerald-400">Privacy:</span>
           <span>Mutual NDA provided upon request</span>
+        </div>
+        <div className="flex items-center gap-2 text-xs font-mono text-gray-400">
+          <span className="text-purple-400">Location:</span>
+          <span>Bengaluru, Karnataka, India</span>
         </div>
       </div>
     </SpotlightCard>
