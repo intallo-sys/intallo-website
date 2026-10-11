@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 import ActionLink from "@/components/ui/ActionLink";
@@ -12,6 +12,7 @@ export default function Header() {
   const [isFloating, setIsFloating] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
+  const toggleButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,29 +26,57 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Automatically close mobile menu if viewport expands to desktop
+  useEffect(() => {
+    const mql = window.matchMedia("(min-width: 981px)");
+    const handleMediaChange = (e: MediaQueryListEvent) => {
+      if (e.matches) {
+        setMobileOpen(false);
+      }
+    };
+
+    mql.addEventListener("change", handleMediaChange);
+    return () => mql.removeEventListener("change", handleMediaChange);
+  }, []);
+
+  const handleCloseMobile = useCallback(() => {
+    setMobileOpen(false);
+  }, []);
+
+  const handleToggleMobile = useCallback(() => {
+    setMobileOpen((prev) => !prev);
+  }, []);
+
   return (
     <>
       <header
-        className={`fixed inset-x-0 top-0 z-[200] border-b transition-[padding,background-color,border-color,backdrop-filter] duration-500 ease-out ${
-          isScrolled
-            ? "border-white/10 bg-[#07090D]/80 backdrop-blur-xl backdrop-saturate-150"
-            : "border-transparent bg-transparent"
+        className={`fixed inset-x-0 top-0 z-[200] border-b transition-[padding,background-color,border-color,backdrop-filter] duration-300 ease-out ${
+          mobileOpen
+            ? "border-b border-white/[0.08] bg-[#07090D]/90 backdrop-blur-xl"
+            : isScrolled
+              ? "border-white/10 bg-[#07090D]/80 backdrop-blur-xl backdrop-saturate-150"
+              : "border-transparent bg-transparent"
         } ${
-          isFloating
+          isFloating && !mobileOpen
             ? "min-[981px]:border-transparent min-[981px]:bg-transparent min-[981px]:pt-4 min-[981px]:backdrop-filter-none"
             : ""
         }`}
       >
         <div
-          className={`mx-auto grid max-w-[1380px] grid-cols-[auto_1fr] items-center gap-5 px-6 py-4 transition-[max-width,padding,background-color,border-radius,box-shadow,backdrop-filter] duration-500 ease-out min-[981px]:grid-cols-[1fr_auto_1fr] md:px-8 ${
-            isFloating
+          className={`mx-auto grid max-w-[1380px] grid-cols-[auto_1fr] items-center gap-4 px-5 py-3.5 sm:px-6 sm:py-4 transition-[max-width,padding,background-color,border-radius,box-shadow,backdrop-filter] duration-300 ease-out min-[981px]:grid-cols-[1fr_auto_1fr] md:px-8 ${
+            isFloating && !mobileOpen
               ? "min-[981px]:max-w-[920px] min-[981px]:rounded-full min-[981px]:bg-[#0D111A]/90 min-[981px]:px-5 min-[981px]:py-2.5 min-[981px]:ring-1 min-[981px]:ring-white/10 min-[981px]:backdrop-blur-xl min-[981px]:backdrop-saturate-150 min-[981px]:shadow-2xl min-[981px]:shadow-black/70"
               : ""
           }`}
         >
           {/* Column 1: Logo */}
-          <div className={`flex items-center gap-3.5 justify-self-start ${isFloating ? "min-[981px]:pl-2" : ""}`}>
-            <ActionLink href="/" aria-label="Intallo — Home" className="flex items-center gap-2.5 hover:opacity-90 transition-opacity">
+          <div className={`flex items-center gap-3.5 justify-self-start ${isFloating && !mobileOpen ? "min-[981px]:pl-2" : ""}`}>
+            <ActionLink
+              href="/"
+              onClick={handleCloseMobile}
+              aria-label="Intallo — Home"
+              className="flex items-center gap-2.5 hover:opacity-90 transition-opacity"
+            >
               <Image
                 src="/images/brand/intallo-mark.png"
                 alt="Intallo Logo"
@@ -91,35 +120,40 @@ export default function Header() {
           </nav>
 
           {/* Column 3: Actions & Mobile Hamburger (Visuvate Style) */}
-          <div className="flex items-center gap-2 justify-self-end min-[981px]:gap-3">
+          <div className="flex items-center gap-2.5 justify-self-end min-[981px]:gap-3">
             {/* Visuvate Signature White Pill CTA Button */}
-            <ActionLink
-              href={headerCta.href}
-              className="inline-flex h-[36px] shrink-0 items-center rounded-full bg-white px-5 text-[13px] font-semibold tracking-[-0.01em] whitespace-nowrap text-black transition-all hover:bg-gray-200 hover:scale-[1.02] active:scale-[0.98] shadow-sm"
-            >
-              {headerCta.label}
-            </ActionLink>
+            {!mobileOpen && (
+              <ActionLink
+                href={headerCta.href}
+                className="hidden sm:inline-flex h-[36px] shrink-0 items-center rounded-full bg-white px-4 md:px-5 text-[13px] font-semibold tracking-[-0.01em] whitespace-nowrap text-black transition-all hover:bg-gray-200 hover:scale-[1.02] active:scale-[0.98] shadow-sm"
+              >
+                {headerCta.label}
+              </ActionLink>
+            )}
 
             {/* Visuvate 2-Bar Animated Round Mobile Menu Button */}
             <button
-              onClick={() => setMobileOpen(!mobileOpen)}
+              ref={toggleButtonRef}
+              type="button"
+              onClick={handleToggleMobile}
               aria-expanded={mobileOpen}
+              aria-controls="mobile-navigation-drawer"
               aria-label={mobileOpen ? "Close menu" : "Open menu"}
-              className={`grid size-[38px] shrink-0 place-items-center rounded-full border transition-colors duration-300 min-[981px]:hidden cursor-pointer ${
+              className={`grid size-[42px] shrink-0 place-items-center rounded-full border transition-all duration-300 min-[981px]:hidden cursor-pointer select-none active:scale-95 touch-manipulation ${
                 mobileOpen
-                  ? "border-white bg-white text-black"
-                  : "border-white/20 bg-white/5 text-white hover:bg-white/10"
+                  ? "border-white bg-white text-black shadow-lg shadow-white/20"
+                  : "border-white/20 bg-white/5 text-white hover:bg-white/10 hover:border-white/40"
               }`}
             >
-              <span className="relative block h-[10px] w-4">
+              <span className="relative block h-[12px] w-[18px]">
                 <span
-                  className={`absolute left-0 block h-[1.5px] w-full transition-all duration-300 ease-out ${
-                    mobileOpen ? "top-[4.25px] rotate-45 bg-black" : "top-0 bg-white"
+                  className={`absolute left-0 block h-[2px] w-full rounded-full transition-all duration-300 ease-out ${
+                    mobileOpen ? "top-[5px] rotate-45 bg-black" : "top-0 bg-white"
                   }`}
                 />
                 <span
-                  className={`absolute left-0 block h-[1.5px] w-full transition-all duration-300 ease-out ${
-                    mobileOpen ? "top-[4.25px] -rotate-45 bg-black" : "top-[8.5px] bg-white"
+                  className={`absolute left-0 block h-[2px] w-full rounded-full transition-all duration-300 ease-out ${
+                    mobileOpen ? "top-[5px] -rotate-45 bg-black" : "top-[10px] bg-white"
                   }`}
                 />
               </span>
@@ -129,7 +163,11 @@ export default function Header() {
       </header>
 
       {/* Visuvate Fullscreen Numbered Drawer */}
-      <MobileMenu isOpen={mobileOpen} onClose={() => setMobileOpen(false)} />
+      <MobileMenu
+        isOpen={mobileOpen}
+        onClose={handleCloseMobile}
+        triggerRef={toggleButtonRef}
+      />
     </>
   );
 }
