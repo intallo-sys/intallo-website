@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import ActionLink from "@/components/ui/ActionLink";
+import StayoraRedirect from "@/components/work/StayoraRedirect";
 import { workData } from "@/lib/content";
 import { ArrowUpRight, CheckCircle2, ExternalLink } from "lucide-react";
 
@@ -29,15 +30,7 @@ export default function WorkPage() {
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[500px] bg-[#0C34C5]/12 blur-[160px] rounded-full pointer-events-none -z-10" />
 
       {/* Backward-compatibility hash redirect: #stayora -> #nova-house */}
-      <script
-        dangerouslySetInnerHTML={{
-          __html: `
-            if (typeof window !== 'undefined' && window.location.hash === '#stayora') {
-              window.location.replace('/work#nova-house');
-            }
-          `,
-        }}
-      />
+      <StayoraRedirect />
 
       <div className="mx-auto max-w-[1320px] px-4 sm:px-6 lg:px-8">
         {/* Header */}
@@ -66,8 +59,16 @@ export default function WorkPage() {
             <div
               key={project.id}
               id={project.id}
-              className="rounded-3xl bg-[#0D111A] border border-white/10 p-6 sm:p-10 md:p-14 overflow-hidden shadow-2xl scroll-mt-28"
+              className="rounded-3xl bg-[#0D111A] border border-white/10 p-6 sm:p-10 md:p-14 overflow-hidden shadow-2xl scroll-mt-28 relative"
             >
+              {project.id === "nova-house" && (
+                <div
+                  id="stayora"
+                  className="absolute -top-28 left-0 pointer-events-none"
+                  aria-hidden="true"
+                />
+              )}
+
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
                 {/* Visual Preview */}
                 <div className="lg:col-span-6 relative aspect-[16/10] rounded-2xl overflow-hidden bg-slate-900 border border-white/10">
@@ -90,7 +91,6 @@ export default function WorkPage() {
                         <span className="text-blue-300">CONCEPT ARCHITECTURE</span>
                       </>
                     )}
-
                   </div>
                 </div>
 
@@ -160,13 +160,13 @@ export default function WorkPage() {
                         </ActionLink>
                       )}
 
-                    <ActionLink
-                      href={`/contact?project=${project.id}`}
-                      className="inline-flex items-center gap-2 text-sm font-semibold text-white bg-white/10 hover:bg-[#1A76FF] px-5 py-2.5 rounded-full transition-all"
-                    >
-                      <span>Inquire</span>
-                      <ArrowUpRight className="w-4 h-4" />
-                    </ActionLink>
+                      <ActionLink
+                        href={`/contact?project=${project.id}`}
+                        className="inline-flex items-center gap-2 text-sm font-semibold text-white bg-white/10 hover:bg-[#1A76FF] px-5 py-2.5 rounded-full transition-all"
+                      >
+                        <span>Inquire</span>
+                        <ArrowUpRight className="w-4 h-4" />
+                      </ActionLink>
                     </div>
                   </div>
                 </div>
