@@ -5,6 +5,7 @@ import Container from "@/components/ui/Container";
 import { services } from "@/lib/content";
 import { SpotlightCard } from "@/components/ui/Animations";
 import CtaSection from "@/components/home/CtaSection";
+import { ArrowUpRight } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Services & Systems Architecture — Intallo",
@@ -40,6 +41,7 @@ const serviceDetails = [
     ],
     tags: ["Next.js", "TypeScript", "Node.js", "PostgreSQL", "Tailwind CSS", "Redis"],
     cta: { label: "Initiate Web Build →", href: "/contact" },
+    caseStudy: { label: "NOVA HOUSE Hotel Case Study", href: "/work/nova-house" },
   },
   {
     number: "02",
@@ -181,13 +183,23 @@ export default function ServicesPage() {
                     </div>
 
                     {/* Action Button */}
-                    <div className="pt-2">
+                    <div className="pt-2 flex flex-wrap items-center gap-3">
                       <ActionLink
                         href={service.cta.href}
                         className="inline-flex items-center gap-2 bg-[#0099FF] hover:bg-[#0088EE] text-white text-sm font-medium px-6 py-3 rounded-full shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
                       >
                         <span>{service.cta.label}</span>
                       </ActionLink>
+
+                      {"caseStudy" in service && service.caseStudy && (
+                        <ActionLink
+                          href={(service.caseStudy as { href: string; label: string }).href}
+                          className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-medium text-gray-300 hover:text-white bg-white/[0.06] hover:bg-white/10 border border-white/10 px-5 py-2.5 rounded-full transition-all"
+                        >
+                          <span>{(service.caseStudy as { href: string; label: string }).label}</span>
+                          <ArrowUpRight className="w-3.5 h-3.5" />
+                        </ActionLink>
+                      )}
                     </div>
                   </div>
 

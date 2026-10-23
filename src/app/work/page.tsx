@@ -2,19 +2,19 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import ActionLink from "@/components/ui/ActionLink";
 import { workData } from "@/lib/content";
-import { ArrowUpRight, CheckCircle2 } from "lucide-react";
+import { ArrowUpRight, CheckCircle2, ExternalLink } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Selected Systems & Architecture Case Studies — Intallo",
   description:
-    "Explore Intallo's concept architectures and system designs: direct hotel booking engines, restaurant QR ordering & KDS, and bakery production automation.",
+    "Explore Intallo's live demonstration systems and architectures: NOVA HOUSE boutique hotel direct booking platform, DinePulse restaurant QR ordering & KDS, and SmartFlow bakery production automation.",
   alternates: {
     canonical: "https://intallo.in/work",
   },
   openGraph: {
     title: "Selected Systems & Architecture Case Studies — Intallo",
     description:
-      "Explore Intallo's concept architectures and system designs: direct hotel booking engines, restaurant QR ordering & KDS, and bakery production automation.",
+      "Explore Intallo's live demonstration systems and architectures: NOVA HOUSE boutique hotel direct booking platform, DinePulse restaurant QR ordering & KDS, and SmartFlow bakery production automation.",
     url: "https://intallo.in/work",
     locale: "en_IN",
   },
@@ -27,6 +27,17 @@ export default function WorkPage() {
     <div className="bg-[#07090D] min-h-screen pt-32 pb-24 text-gray-300">
       {/* Background Radial Glow */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[500px] bg-[#0C34C5]/12 blur-[160px] rounded-full pointer-events-none -z-10" />
+
+      {/* Backward-compatibility hash redirect: #stayora -> #nova-house */}
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `
+            if (typeof window !== 'undefined' && window.location.hash === '#stayora') {
+              window.location.replace('/work#nova-house');
+            }
+          `,
+        }}
+      />
 
       <div className="mx-auto max-w-[1320px] px-4 sm:px-6 lg:px-8">
         {/* Header */}
@@ -67,9 +78,19 @@ export default function WorkPage() {
                     sizes="(max-width: 1024px) 100vw, 600px"
                     className="object-cover"
                   />
-                  <div className="absolute top-4 left-4 flex items-center gap-2 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/15 text-[11px] font-mono tracking-wider text-blue-300">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#1A76FF]" />
-                    <span>CONCEPT ARCHITECTURE</span>
+                  <div className="absolute top-4 left-4 flex items-center gap-2 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/15 text-[11px] font-mono tracking-wider">
+                    {project.badge === "LIVE DEMO" ? (
+                      <>
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_6px_#34d399]" />
+                        <span className="text-emerald-400 font-semibold">LIVE DEMO</span>
+                      </>
+                    ) : (
+                      <>
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#1A76FF]" />
+                        <span className="text-blue-300">CONCEPT ARCHITECTURE</span>
+                      </>
+                    )}
+
                   </div>
                 </div>
 
@@ -116,13 +137,37 @@ export default function WorkPage() {
                       ))}
                     </div>
 
+                    <div className="flex flex-wrap items-center gap-2.5">
+                      {"demoHref" in project && project.demoHref && (
+                        <ActionLink
+                          href={project.demoHref as string}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-white bg-gradient-to-r from-[#0C34C5] to-[#1A76FF] hover:from-[#002FA7] hover:to-[#0066FF] px-4 py-2 rounded-full shadow-md shadow-blue-600/30 transition-all"
+                        >
+                          <span>View Live Demo</span>
+                          <ExternalLink className="w-3.5 h-3.5" />
+                        </ActionLink>
+                      )}
+
+                      {"caseStudyHref" in project && project.caseStudyHref && (
+                        <ActionLink
+                          href={project.caseStudyHref as string}
+                          className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-gray-200 hover:text-white bg-white/[0.08] hover:bg-white/15 border border-white/10 px-4 py-2 rounded-full transition-all"
+                        >
+                          <span>Case Study</span>
+                          <ArrowUpRight className="w-3.5 h-3.5" />
+                        </ActionLink>
+                      )}
+
                     <ActionLink
                       href={`/contact?project=${project.id}`}
                       className="inline-flex items-center gap-2 text-sm font-semibold text-white bg-white/10 hover:bg-[#1A76FF] px-5 py-2.5 rounded-full transition-all"
                     >
-                      <span>Inquire About This System</span>
+                      <span>Inquire</span>
                       <ArrowUpRight className="w-4 h-4" />
                     </ActionLink>
+                    </div>
                   </div>
                 </div>
               </div>
