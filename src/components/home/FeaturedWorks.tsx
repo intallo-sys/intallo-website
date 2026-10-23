@@ -3,7 +3,7 @@
 import Image from "next/image";
 import ActionLink from "@/components/ui/ActionLink";
 import { home } from "@/lib/content";
-import { ArrowUpRight, CheckCircle2 } from "lucide-react";
+import { ArrowUpRight, CheckCircle2, ExternalLink } from "lucide-react";
 
 export default function FeaturedWorks() {
   const { featuredWork } = home;
@@ -46,8 +46,9 @@ export default function FeaturedWorks() {
                       <span className="text-xs font-mono tracking-wider text-[#1A76FF] uppercase">
                         {item.category}
                       </span>
-                      <span className="px-2 py-0.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-[10px] font-mono text-blue-400">
-                        CONCEPT PREVIEW
+                      <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-mono tracking-wider ${item.badge === "LIVE DEMO" ? "bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-semibold inline-flex items-center gap-1.5" : "bg-blue-500/10 border border-blue-500/20 text-blue-400"}`}>
+                        {item.badge === "LIVE DEMO" && <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />}
+                        {item.badge || "CONCEPT PREVIEW"}
                       </span>
                     </div>
 
@@ -75,14 +76,33 @@ export default function FeaturedWorks() {
                   </div>
 
                   {/* Action Link */}
-                  <div className="pt-4">
+                  <div className="pt-4 flex flex-wrap items-center gap-3">
                     <ActionLink
                       href={item.cta.href}
-                      className="inline-flex items-center gap-2 text-sm sm:text-base font-semibold text-white bg-white/[0.08] hover:bg-[#1A76FF] border border-white/10 px-5 py-2.5 rounded-full transition-all duration-200 group-hover:border-[#1A76FF]/40"
+                      target={item.cta.external ? "_blank" : undefined}
+                      rel={item.cta.external ? "noopener noreferrer" : undefined}
+                      className={`inline-flex items-center gap-2 text-sm sm:text-base font-semibold text-white px-5 py-2.5 rounded-full transition-all duration-200 ${
+                        item.cta.external
+                          ? "bg-gradient-to-r from-[#0C34C5] to-[#1A76FF] hover:from-[#002FA7] hover:to-[#0066FF] shadow-lg shadow-blue-600/30"
+                          : "bg-white/[0.08] hover:bg-[#1A76FF] border border-white/10 group-hover:border-[#1A76FF]/40"
+                      }`}
                     >
                       <span>{item.cta.label}</span>
-                      <ArrowUpRight className="w-4 h-4" />
+                      {item.cta.external ? (
+                        <ExternalLink className="w-4 h-4" />
+                      ) : (
+                        <ArrowUpRight className="w-4 h-4" />
+                      )}
                     </ActionLink>
+
+                    {item.secondaryCta && (
+                      <ActionLink
+                        href={item.secondaryCta.href}
+                        className="inline-flex items-center gap-2 text-sm sm:text-base font-semibold text-gray-200 hover:text-white bg-white/[0.06] hover:bg-white/[0.12] border border-white/10 px-5 py-2.5 rounded-full transition-all duration-200"
+                      >
+                        <span>{item.secondaryCta.label}</span>
+                      </ActionLink>
+                    )}
                   </div>
                 </div>
 
